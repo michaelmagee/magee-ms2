@@ -36,21 +36,26 @@ Wireframes
 <br> ***
 
 ## MINIMUM Features (Must Have) 
+- **Simple Interface**: Must have a simple interface free of distraction and complexity 
+- **Multi Level**: Should have at least 2 levels - easy & hard
+- **Game timer/progress bar**: Counts down the remaining time left to win or lose the game
+- **Clear indication of win or lose**: An visual presentation of win or lose when the timer ends
+- **Win/Loss/total games Counters**:A running total of games played, won and lost
 - **xxx**:
 - **xxx**:
-- **xxx**:
+
 
 <br> <br> ***
 
 ## STRETCH Features (Nice to have) 
-- **xxx**:
-- **xxx**:
+- **Hint**: The user will be able to click a "Hint" button after the first car selection that will Visually indicate ("Jiggle") the matching card and one that does not match to select from. 
+
 
 <br> *** 
 
-## DEFERRED Features (Wish I could) 
-
-
+## DEFERRED Features (Wish I could, maybe I will) 
+- **Email feedback**: User will be able to send a feedback form via email to me
+- **Automated testing**: Jasmine test for object methods
 
 
 ***
@@ -58,20 +63,30 @@ Wireframes
 
 In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
 
-- [JQuery](https://jquery.com)
-    - The project uses **JQuery** to simplify DOM manipulation.
-- HTML Validation by freeformatter
+- JQuery to simplify DOM manipulation.
+    - https://jquery.com)
+- HTML Validation by freeformatter 
     - https://www.freeformatter.com/html-validator.html
 - CSS Validation by W3C
     - https://jigsaw.w3.org/css-validator/
-- Development framework Visual Studio Code (mac) by Microsoft v1.44.1
-- Bootstrap  4.1.3 
+- Development framework Visual Studio Code (mac) by Microsoft v1.47.1
+    -https://visualstudio.microsoft.com/vs/mac/
+- Bootstrap 4.5.0
+   - https://getbootstrap.com/docs/4.5/getting-started/introduction/
 - Javascript 
+    - https://www.javascript.com/
+- Github
+    - https://https://github.com/
+- Github Pages (Hosts the project)
+    - https://pages.github.com/
+
+
 
 
 
 ******
 ## Testing 
+
 
 There should be no visible difference in behavior between browsers.  I have tested with:  
 - Chrome Version 81.0.4044.122
@@ -89,7 +104,7 @@ Responsiveness checks have been run by using the Chrome developers's tools as we
 
 This sample site is set up to use git pages based on the current code version in Github.  Github pages is enabled by going to the settings tab of the github project and enabling github pages.    Github Pages uses the current version of the codeline to serve the application up and is always accessible.  
 
-- Pages location is:  https://michaelmagee.github.io/magee-MS1/
+- Pages location is: https://michaelmagee.github.io/magee-ms2/
 
 
 This sample site can easily edited and run locally in the VSCode IDE by using the GoLive feature, which is how this code was developed.  To do this:
