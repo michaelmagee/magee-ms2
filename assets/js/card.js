@@ -19,14 +19,14 @@ class Card {
         <div id=${this.htmlId} class="flip-card">
             <div class="flip-card-container">
                 <div class="flip-card-back">
-                    <h2 class="flip-card-back">${this.cardValue}</h2> 
+                    <h2 class="flip-card-back-text">${this.cardValue}</h2> 
                 </div>
                 <div class="flip-card-front">
                     <h2 class="flip-card-front-text">Card Back</h2> 
                 </div>
             </div>
         </div>`;
-        console.log("Constructor for Card completed: " + htmlId);
+        // DEBUG console.log("Constructor for Card completed: " + htmlId);
     }
 
     /**

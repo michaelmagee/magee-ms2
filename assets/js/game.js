@@ -10,10 +10,11 @@
 
 class Game {
 
-    constructor(gameName, gameLevelType, cardCount) {
+    constructor(gameName, gameLevelType, cardCount, cardValues) {
         this.name = gameName;
         this.type = gameLevelType;
         this.cardCount = cardCount;
+        this.cardValues = cardValues;
         console.log("constructor for Game complete");
     }
 
@@ -67,15 +68,45 @@ class Game {
     addBoard() {
         // Create the Board 
         let newBoard = new Board(this, this.type, this.cardCount);
-
-        newBoard.addCards();
+        let shuffledCards = this.shuffle(this.cardValues);
+        newBoard.addCards(shuffledCards);
 
         newBoard.addAllListeners();
         return newBoard;
     }
 
+    /* I caught a duplicate here */
+    shuffle_ng(unshuffled) {
+        let shuffled = unshuffled
+            .map((a) => ({ sort: Math.random(), value: a }))
+            .sort((a, b) => a.sort - b.sort)
+            .map((a) => a.value);
+        console.log("Unshuffled: " + ROMANNUMERALS);
+        console.log("Reshuffled: " + shuffled);
+        return shuffled;
+    }
 
-/*   Temporary */
+    shuffle(array) {
+
+        let m = array.length, t, i;
+
+        console.log("Before Shuffle:" + array);
+
+        // While there remain elements to shuffle…
+        while (m) {
+
+            // Pick a remaining element…
+            i = Math.floor(Math.random() * m--);
+
+            // And swap it with the current element.
+            t = array[m];
+            array[m] = array[i];
+            array[i] = t;
+        }
+        console.log("After Shuffle:" + array);
+        return array;
+    }
+    /*   Temporary */
     dumpGame() {
         // Code to format/dump myself to the log.
         console.log(this);

@@ -76,15 +76,15 @@ class Board {
 
     /**
  * @method: addCards
- * 
+ * @param {[shuffledCards]]} card values  - Shuffled array of cards
  * uses defined card count to create all new cards PARAMS TBD 
  */
-    addCards() {
-        for (var i = 1; i <= this.cardCount; i++) {
-            let card = this.addCard(this, this.type, `card-${this.type}-${i}`, `V-${i}`);
+    addCards(shuffledCards) {
+        for (var i = 0; i < this.cardCount; i++) {
+            let card = this.addCard(this, this.type, `card-${this.type}-${i}`, shuffledCards[i]);
             this.boardElement.innerHTML += card.getHTML();
             card.htmlElement = document.getElementById(card.htmlId);
-            card.hello();
+            // TEST card.hello();
         }
 
     }

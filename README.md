@@ -24,6 +24,10 @@ My approach was to provide a simple to use game that has a clean presentation wi
 * As a user I expect the game to be challenging enough to capture my attention but easy enough be derive satisfaction 
 * As a user I want to be able to observe my success / failure and measure my improvement. 
 
+
+*** 
+Hosted game
+The game is published at https://michaelmagee.github.io/magee-ms2/
 ***
 Wireframes
 
@@ -131,7 +135,7 @@ Another blue button should appear to click: *Open Browser*.
 - Memory Game and animation tutorials from Adam Khoury
 - Javascript class usage tutorials NetNinjas
 - Table of contents generated with markdown-toc: http://ecotrust-canada.github.io/markdown-toc/  
-- 
+- Rational approach to simple shuffle approaches: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array   I selected the Fisher-Yates (aka Knuth) Shuffle
 
 ### Environment 
 - Code Institute student template for Gitpod was used
