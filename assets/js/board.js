@@ -20,7 +20,6 @@ class Board {
 
 /**
  * @method: cardFlip
-
  * @param {event} event - The Game object parent.
  * Processes a card click event
  */

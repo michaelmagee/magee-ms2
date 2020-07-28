@@ -15,11 +15,17 @@ class Card {
         this.htmlId = htmlId;
         this.htmlElement;
         this.cardValue = cardvalue;
-        this.innerHtml = `<div id = ${this.htmlId} class="card-inline-grid">
-        <div class="card-front card"> <div class="card-value">
-         <h2 class="card-value-text">${this.cardValue}</h2></div></div>
-        <div class="card-back card"><h2 class="card-back-text">?</h2> </div></div>`;
-
+        this.innerHtml = `
+        <div id=${this.htmlId} class="flip-card">
+            <div class="flip-card-container">
+                <div class="flip-card-back">
+                    <h2 class="flip-card-back">${this.cardValue}</h2> 
+                </div>
+                <div class="flip-card-front">
+                    <h2 class="flip-card-front-text">Card Back</h2> 
+                </div>
+            </div>
+        </div>`;
         console.log("Constructor for Card completed: " + htmlId);
     }
 

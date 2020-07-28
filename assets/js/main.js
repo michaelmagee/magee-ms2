@@ -1,11 +1,16 @@
 
+
+/* initial setup and non-class related stuff.  
+Document this 
+*/ 
+
 let cardCount = 24;      // Test with 8 for now
 
 let game = new Game("Game1", "easy", cardCount);
 
 let board = game.addBoard(game, game.typetype, cardCount);
 
-
+game.addButtonListeners(); 
 
 $('.xcard .xcard-inner').click(function() {
     $(this).closest('.xcard').toggleClass('hover');

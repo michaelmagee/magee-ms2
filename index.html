@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
         integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
@@ -20,36 +20,50 @@
 
 <body>
 
-    <h1 id="myH1">Let's test your memory</h1>
-    
-    <div class="xcard">
-        <div class="xcard-inner">
-          <div class="xcard-front">
-            <h2>FRONT CARD</h2>
-          </div>
-          <div class="xcard-back">
-            <h2>BACK CARD</h2>
-          </div>
+
+    <div class="header">
+        <!-- basic title   -->
+        <div class="header-row">
+            <h1 class="header-text">Memory Challenge</h1>
         </div>
-      </div>
+    </div>
+
+
+    <div id="game-section">
+      
+            
+        <div class="container">
+            <div id="game-control" class="row">
+                <div class= "col"></div> 
+                <div  class="style-me-button">
+                    <button id="button1" class="style-me" type="button" >Button1</button>
+                </div>
+                <div  class="style-me-button">
+                    <button id="button2" class="style-me" type="button" >Button2</button>
+                </div>
+                <div  class="style-me-button">
+                    <button id="button3" class="style-me" type="button" >Button3</button>
+                </div>
+                <div  class="style-me-button">
+                    <button id="button4" class="style-me" type="button" >Button4</button>
+                </div>
+            </div>  <!-- row  -->
+
+            </div>
+        </div>
 
 
     <section id="board-section">
-        <div id="game-board">
+        <div class="container">
+            <div id="gameboard" class="row">
 
-            <!--div id = "cardid01"  class="card-inline-grid">
-                <div class="card-front card">
-                    <div class="card-value">
-                        <h2 class="card-value-text">01</h2>
-                    </div>
-                </div>
-                <div class="card-back card">
-                    <h2 class="card-back-text">?</h2>
-                </div>
-            </div -->
-
+            </div>
         </div>
+
     </section>
+
+
+
 
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

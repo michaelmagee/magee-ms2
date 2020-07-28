@@ -34,13 +34,29 @@ h1, h2, h3, h4 {
     text-transform: uppercase;
 }
 
-
 /*  ---------------------------------------------------------   Heading  */
 
 header {
     margin: 0;
     /*  set all margins to 0 for now */
+    text-align: center;
+    width: 100%;
+    height: 100px;
 }
+
+.header-box {
+    margin: 35px 15px 60px;
+    text-decoration: none
+}
+
+.header-text {
+    font-size: 300%;
+    color: whitesmoke;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+    /* Subtle */
+}
+
+/* --------------------     Card Styles    -------------------------*/
 
 .opaque-overlay-card {
     position: absolute;
@@ -53,24 +69,104 @@ header {
 }
 
 
+.flip-card {
+    background-color: transparent;
+    width: 100px;
+    height: 100px;
+    margin: 10px 10px;
+    perspective: 1000px;
+    /* remove if unhappy */
+}
+
+.flip-card-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* https://www.codespot.org/css-hover-effects/ */
+
+.flip-card-container:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.flip-card.click .flip-card-container {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    background-color: rgb(141, 135, 135);
+    color: black;
+}
+
+.flip-card-front {
+    color:yellow;
+}
+
+.flip-card-back {
+    background-color: #2980b9;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.flip-card-back {
+    color:red
+}
 /*  -------------------------------------------------------------   Animations   
  Note: Inspired by https://codeburst.io/tutorial-three-awesome-css-hover-transitions-animations-for-beginners-c14c08309091
-
 */
+
 @keyframes wiggle {
-        0% { transform: translate(1px, 1px) rotate(0deg); }
-        10% { transform: translate(-1px, -2px) rotate(-1deg); }
-        20% { transform: translate(-3px, 0px) rotate(1deg); }
-        30% { transform: translate(3px, 2px) rotate(0deg); }
-        40% { transform: translate(1px, -1px) rotate(1deg); }
-        50% { transform: translate(-1px, 2px) rotate(-1deg); }
-        60% { transform: translate(-3px, 1px) rotate(0deg); }
-        70% { transform: translate(3px, 1px) rotate(-1deg); }
-        80% { transform: translate(-1px, -1px) rotate(1deg); }
-        90% { transform: translate(1px, 2px) rotate(0deg); }
-        100% { transform: translate(1px, -2px) rotate(-1deg); }
-      }
-    /*
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
+}
+
+/*    Try these too
     20%  { transform: translateX(4px);  }
     40%  { transform: translateX(-4px); }
     60%  { transform: translateX(2px);  }
@@ -78,10 +174,11 @@ header {
     100% { transform: translateX(0);    }
   }
 */
-  .wiggle:hover {
+
+.wiggle:hover {
     animation: wiggle .4s ease;
     animation-iteration-count: 1;
-  }
+}
 
 /*  ----------------------- Media Queries section  Taken from Bootstrap site */
 
@@ -99,115 +196,3 @@ Large devices (desktops, 992px and up)
 
 Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }*/
-
-/*   TEST 
-        MAKE THESE NAME WORK BETTER 
-        */
-
-#board-section {
-    width: 100%;
-    padding: 50px 50px;
-    display: flex;
-    justify-content: center;
-}
-
-#game-board {
-    max-width: 675px;
-}
-
-.card-inline-grid {
-    display: inline-grid;
-    margin-bottom: 10px;
-}
-
-.card {
-    grid-column: 1 / span 1;
-    grid-row: 1 / span 1;
-    align-self: center;
-    justify-self: center;
-    text-align: center;
-    border: 2px solid #000000;
-    border-radius: 10px;
-    height: 50px;
-    width: 100px;
-}
-
-.card-front {
-    display: flex;
-    background-color: #cce6ff;
-    padding: 10px;
-}
-
-.card-value {
-    width: 40px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-}
-
-.card-value-text {
-    margin: 0 0;
-    font-size: 20%;
-    color: black;
-}
-
-.card-back{
-    padding: 5px 10px 5px;    /* 5px 10px 5px */
-    background-color: #0033cc ;
-}
-
-.card-back-text{
-    color: whitesmoke;
-    text-shadow: 1px 1px 1px #001a66;
-    margin: 0 0;
-}
-
-
-/*   ------------------------   Several flip articles contributed to this.    
-https://www.google.com/search?rlz=1C5CHFA_enUS563US564&ei=v8cdX8HLJLGJytMPnpWskA4&q=css+card+flip+effects&oq=css+card+flip+effects&gs_lcp=CgZwc3ktYWIQAzIICAAQFhAKEB46BAgAEEc6BAgAEEM6CwgAELEDELEDEJECOgoIABCxAxCxAxBDOgcIABCxAxBDOgUIABCxAzoFCAAQkQI6AggAOgYIABAWEB5QlhpY5jlgvTtoAHABeACAAVuIAewKkgECMTiYAQCgAQGqAQdnd3Mtd2l6wAEB&sclient=psy-ab&ved=0ahUKEwiBp63JwuvqAhWxhHIEHZ4KC-IQ4dUDCAw&uact=5
- */
-
-  /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
-  .xcard {
-    background-color: transparent;
-    width: 300px;
-    height: 200px;
-    border: 1px solid #f1f1f1;
-    perspective: 1000px; /* Remove this if you don't want the 3D effect */
-  }
-  
-  /* This container is needed to position the front and back side */
-  .xcard-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-  }
-  
-  /* Do an horizontal flip when you move the mouse over the flip box container */
-  .xcard.hover .xcard-inner {
-    transform: rotateY(180deg);
-  }
-  
-  /* Position the front and back side */
-  .xcard-front, .xcard-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-  }
-  
-  /* Style the front side (fallback if image is missing) */
-  .xcard-front {
-    background-color: #bbb;
-    color: black;
-  }
-  
-  /* Style the back side */
-  .xcard-back {
-    background-color: dodgerblue;
-    color: white;
-    transform: rotateY(180deg);
-  }
