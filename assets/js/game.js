@@ -15,6 +15,7 @@ class Game {
         this.type = gameLevelType;
         this.cardCount = cardCount;
         this.cardValues = cardValues;
+        this.timer= new Timer();
         console.log("constructor for Game complete");
     }
 
@@ -55,9 +56,16 @@ class Game {
         console.log("Button3 Clicked");
     }
     button4Click() {
-        console.log("Button4 Clicked");
+        this.timer.resetTimer();        
+        this.timer.setHTML();
+
+        this.timer.startTimer(this.gameLost);
+        console.log("Timer started");
     }
 
+    gameLost() {
+        console.log("  Lost that one!  ");
+    }
 
     //  NOTE: need to figure out how to destroy stuff before creating new board
     /**

@@ -136,6 +136,7 @@ Another blue button should appear to click: *Open Browser*.
 - Javascript class usage tutorials NetNinjas
 - Table of contents generated with markdown-toc: http://ecotrust-canada.github.io/markdown-toc/  
 - Rational approach to simple shuffle approaches: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array   I selected the Fisher-Yates (aka Knuth) Shuffle
+- Cool animated timer (modified to a class by me, but thank you Mateusz Rybczonec!) https://css-tricks.com/how-to-create-an-animated-countdown-timer-with-html-css-and-javascript/  
 
 ### Environment 
 - Code Institute student template for Gitpod was used
