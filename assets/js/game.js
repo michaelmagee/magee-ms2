@@ -53,6 +53,7 @@ class Game {
         console.log("Button2 Clicked");
     }
     button3Click() {
+        this.timer.stopTimer(); 
         console.log("Button3 Clicked");
     }
     button4Click() {

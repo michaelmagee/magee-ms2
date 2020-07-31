@@ -64,12 +64,15 @@ class Timer {
 
 
     resetTimer() {
-
         this.timePassed = 0;
         this.timeLeft = this.TIME_LIMIT;
         this.remainingPathColor = this.COLOR_CODES.info.color;
 
     };
+
+    stopTimer() {
+        clearInterval(this.timerInterval);   // Does it work? 
+    }
 
     onTimesUp() {
         clearInterval(this.timerInterval);
