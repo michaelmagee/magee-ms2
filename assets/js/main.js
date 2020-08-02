@@ -18,10 +18,6 @@ let board = game.addBoard(game, game.typetype, cardCount);
 
 game.addButtonListeners(); 
 
-$('.xcard .xcard-inner').click(function() {
-    $(this).closest('.xcard').toggleClass('hover');
-    $(this).css('transform, rotateY(180deg)');
-});
 
 
 

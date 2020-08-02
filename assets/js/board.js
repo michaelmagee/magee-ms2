@@ -14,20 +14,54 @@ class Board {
         this.type = type;
         this.cardCount = cardcount;
         this.cards = [];
+        this.card1 = null;      // First card in challenge set 
+        this.card2 = null;      // Second card in challenge set 
         this.boardElement = document.getElementById("gameboard");
+        /* // save the click handler so it can be used in multiple places
+        this.clickHandler = this.cardClick.bind(this);
+        window.addEventListener('click', this.clickHandler)
+        This is window based and does not work! 
+        */ 
         console.log("constructor for Board completed ");                /* Remove  */
     }
 
-/**
- * @method: cardFlip
- * @param {event} event - The Game object parent.
- * Processes a card click event
- */
+    /**
+     * @method: cardClick
+     * @param {event} event - The card clicked.
+     * Processes a card click event
+     */
+    cardClick(event) {
+        console.log("Clicked: " + event.id);
+
+        // If it's the first card clicked, just save it and disable it
+        if (this.card1 === null) {
+            this.card1 = event;
+            this.cardFlip(event);
+            event.removeEventListener("click", this.cardClick);   // Disable to commit user to this card
+            return;
+        }
+        // Since it's the second card, see if there's a match 
+        this.card2 = event;     // save for now
+        this.cardFlip(event);
+        event.removeEventListener("click", this.cardClick);   // Disable to commit user to this card
+
+        //if (this.card1
+        // Add them back 
+        /*
+        this.card1.addEventListener('click', () => {
+            this.cardClick(this.card1);
+        });*/
+    }
+
+
+    /**
+     * @method: cardFlip
+     * @param {event} event - The Game object parent.
+     * Processes a card click event
+     */
     cardFlip(event) {
         $(`#${event.id}`).toggleClass("click");
         $(`#${event.id}`).css("transform, rotateY(180deg)");
-
-        console.log("Clicked: " + event.id);
     }
 
     /**
@@ -43,13 +77,13 @@ class Board {
         */
     }
 
-/**
- * @method: getCardByID
- * 
- * @param {card} card - The card that needs to be wiggled.  Planned for Hints
- * @returns {text}  htmlID of card
- * Wiggle a card as a match hint
- */
+    /**
+     * @method: getCardByID
+     * 
+     * @param {card} card - The card that needs to be wiggled.  Planned for Hints
+     * @returns {text}  htmlID of card
+     * Wiggle a card as a match hint
+     */
     getCardByID(htmlId) {
         let foundCard = null;
         for (var i = 0; i < this.cards.length; i++) {
@@ -61,13 +95,13 @@ class Board {
         return foundCard;
     }
 
-/**
- * @method: addCard
- * 
- * @param {card} card - Creates a card instance
- * @returns {card}  card instance
- * Adds a card  
- */
+    /**
+     * @method: addCard
+     * 
+     * @param {card} card - Creates a card instance
+     * @returns {card}  card instance
+     * Adds a card  
+     */
     addCard(board, type, htmlId, cardValue) {
         let newCard = new Card(board, type, htmlId, cardValue);
         this.cards.push(newCard);
@@ -96,12 +130,18 @@ class Board {
  * Note the was listenrs needed to be associated.  
  */
     addAllListeners() {
-        let htmlCards = Array.from(document.getElementsByClassName('flip-card'));
+       let htmlCards = Array.from(document.getElementsByClassName('flip-card'));
+
         htmlCards.forEach(card => {
             card.addEventListener('click', () => {
-                this.cardFlip(card);
+                this.cardClick(card);
             });
-        });
+    });
+        console.log("added listener"); 
+   
+    }
+
+};     
 
         /*  CLEAN UP.  This was all of the unsuccessful attempst to add an event listener to a 2 deep level class.  
         Document this 
@@ -131,8 +171,5 @@ class Board {
 
         // });
 
-    }
-
-}
 
 
