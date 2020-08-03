@@ -113,8 +113,11 @@ header {
     color: black;
 }
 
-.flip-card-front {
-    color:yellow;
+.flip-card-front-text {
+    margin: 25px;
+    font-size: 300%;
+    text-align: center;
+    color:whitesmoke;
 }
 
 .flip-card-back {

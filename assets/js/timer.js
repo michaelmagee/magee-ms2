@@ -33,7 +33,6 @@ class Timer {
             }
         };
         this.remainingPathColor = this.COLOR_CODES.info.color;
-        console.log("constructor for Tomer complete");
     }
 
 

@@ -14,44 +14,99 @@ class Board {
         this.type = type;
         this.cardCount = cardcount;
         this.cards = [];
+        this.cardSetsUnmatched = 0;
         this.card1 = null;      // First card in challenge set 
         this.card2 = null;      // Second card in challenge set 
+        this.matchInProcess = false;
         this.boardElement = document.getElementById("gameboard");
-        /* // save the click handler so it can be used in multiple places
-        this.clickHandler = this.cardClick.bind(this);
-        window.addEventListener('click', this.clickHandler)
-        This is window based and does not work! 
-        */
-        console.log("constructor for Board completed ");                /* Remove  */
+
     }
 
     /**
      * @method: cardClick
      * @param {event} event - The card clicked.
      * Processes a card click event
+     * for 1st card in set:
+     * - flip it and disble listener to commit user to card
+     * - set matchInProcess false to allow a second card to be selected
+     * - return
+     * for 2nd card in set: 
+     * - set matchInProcess true to ignore devious clicks
+     * - flip it
      */
-    cardClick(event) {
-        console.log("Clicked: " + event.id);
+    handleEvent(event) {
 
+        if (this.matchInProcess) return;    // ignore clicks while card animation occurs
+
+        let theCard = event.currentTarget;
         // If it's the first card clicked, just save it and disable it
         if (this.card1 === null) {
-            this.card1 = event;
-            this.cardFlip(event);
-
+            this.card1 = theCard;
+            this.cardFlip(theCard);
+            this.card1.removeEventListener("click", this);
+            this.matchInProcess == false;
             return;
         }
+
+
         // Since it's the second card, see if there's a match 
-        this.card2 = event;     // save for now
-        this.cardFlip(event);
+        // no need to remove the listener because matchInProcess is true.
+        this.matchInProcess == true;
+        this.card2 = theCard;               // save for now
+        this.cardFlip(theCard);
+        if (this.isMatch(this.card1, this.card2)) {
 
+            //$("#" + this.card1.id).addClass("opaque-overlay-card");
+            //$("#" + this.card2.id).addClass("opaque-overlay-card");
+            this.card1.removeEventListener("click", this);
+            this.card2.removeEventListener("click", this);
+            this.card1 = null;
+            this.card2 = null;
+            this.matchInProcess == false;
+            this.cardSetsUnmatched--;
+            console.log("MATCHED");
+        } else {
+            console.log("NOPE");
+            // Unwind  it
+
+            setTimeout(() => {
+                this.cardFlip(this.card1);
+                this.cardFlip(this.card2);
+                this.card1.addEventListener("click", this);
+                this.card1 = null;
+                this.card2 = null;
+                this.matchInProcess == false;
+            }, 1000);
+        }
+
+
+
+
+
+        /*
+                event.currentTarget.removeEventListener("click", this);
+                console.log(event);
+                event.currentTarget.addEventListener("click", this);
+        */
     }
 
-    handleEvent(event) {
-        event.currentTarget.removeEventListener("click", this);
-        console.log(event);
-        event.currentTarget.addEventListener("click", this);
-    }
+    /**
+     * @method: isMatch
+     * @param {card} card1  - First of a potential pair.
+     * @param {card} card2  - Second of a potential pair.
+     * @returns {boolean}   - true if cards match
+     * Processes a card click event
+     */
+    isMatch(card1, card2) {
+        let card1ValueID = "#" + card1.id + "-value"; // document.getElementById(card1.id + "-value"); 
+        let card2ValueID = "#" + card2.id + "-value" // document.getElementById(card2.id + "-value");
+        let card1value = $(card1ValueID).text();
+        let card2value = $(card2ValueID).text();
 
+        let result = $(card1ValueID).text() == $(card2ValueID).text();
+
+        return $(card1ValueID).text() == $(card2ValueID).text();
+    }
 
 
     /**
@@ -59,9 +114,9 @@ class Board {
      * @param {event} event - The Game object parent.
      * Processes a card click event
      */
-    cardFlip(event) {
-        $(`#${event.id}`).toggleClass("click");
-        $(`#${event.id}`).css("transform, rotateY(180deg)");
+    cardFlip(clicked) {
+        $(`#${clicked.id}`).toggleClass("click");
+        $(`#${clicked.id}`).css("transform, rotateY(180deg)");
     }
 
     /**
@@ -118,62 +173,24 @@ class Board {
             let card = this.addCard(this, this.type, `card-${this.type}-${i}`, shuffledCards[i]);
             this.boardElement.innerHTML += card.getHTML();
             card.htmlElement = document.getElementById(card.htmlId);
-            // TEST card.hello();
         }
-
+        this.cardSetsUnmatched = shuffledCards.length / 2;
     }
 
     /**
  * @method: addAllListeners
  * 
- * Adds all click listers to the cards 
- * Note the was listenrs needed to be associated.  
- * Note: https://dev.to/rikschennink/the-fantastically-magical-handleevent-function-1bp4
+ * Adds all click listeners to all cards 
+ 
  */
     addAllListeners() {
         let htmlCards = Array.from(document.getElementsByClassName('flip-card'));
 
         htmlCards.forEach(card => {
             card.addEventListener('click', this);
-            /*
-            card.addEventListener('click', () => {
-                this.cardClick(card);
-            });
-            */
         });
-        console.log("added listener");
 
     }
-
-
-
-    /*  CLEAN UP.  This was all of the unsuccessful attempst to add an event listener to a 2 deep level class.  
-    Document this 
-
-    this.cards.forEach(card => {
-        card.htmlElement.addEventListener('click', () => {
-            card.board.cardFlip(card);
-        });
-    });
- 
-    let index = 0;
-    for (index = 0; index < this.cards.length; index++) {
-        this.cards[index].htmlElement.addEventListener('click', this.cardFlip);
-    }
-        */
-
-    //this.cards.forEach(function(thecard) {
-
-    // https://stackoverflow.com/questions/30446622/es6-class-access-to-this-with-addeventlistener-applied-on-method
-    // card.htmlElement.addEventListener('click', this.cardFlip);
-    // card.htmlElement.addEventListener('click', ev => cardFlip(ev));
-    //card.htmlElement.addEventListener('click', evt => console.log(evt));
-    //card.htmlElement.addEventListener('click', this.cardFlip.bind(this));
-
-    //this.cardFlip() = this.cardFlip.bind(this);
-    // thecard.htmlElement.addEventListener('click', this.cardFlip);
-
-    // });
 
 };
 
