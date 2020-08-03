@@ -24,6 +24,10 @@ My approach was to provide a simple to use game that has a clean presentation wi
 * As a user I expect the game to be challenging enough to capture my attention but easy enough be derive satisfaction 
 * As a user I want to be able to observe my success / failure and measure my improvement. 
 
+<br> ***
+
+## TODO: 
+handle ......
 
 *** 
 Hosted game
@@ -137,6 +141,8 @@ Another blue button should appear to click: *Open Browser*.
 - Table of contents generated with markdown-toc: http://ecotrust-canada.github.io/markdown-toc/  
 - Rational approach to simple shuffle approaches: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array   I selected the Fisher-Yates (aka Knuth) Shuffle
 - Cool animated timer (modified to a class by me, but thank you Mateusz Rybczonec!) https://css-tricks.com/how-to-create-an-animated-countdown-timer-with-html-css-and-javascript/  
+- Thank you Rik Schennink https://dev.to/rikschennink/the-fantastically-magical-handleevent-function-1bp4 for providing insight into event listener management within classes.  I was stuck for 4 days wresting with class level addEventListener/removeEventListener without ever knowing about handleEvent.
+
 
 ### Environment 
 - Code Institute student template for Gitpod was used

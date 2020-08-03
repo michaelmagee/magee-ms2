@@ -21,7 +21,7 @@ class Board {
         this.clickHandler = this.cardClick.bind(this);
         window.addEventListener('click', this.clickHandler)
         This is window based and does not work! 
-        */ 
+        */
         console.log("constructor for Board completed ");                /* Remove  */
     }
 
@@ -37,21 +37,21 @@ class Board {
         if (this.card1 === null) {
             this.card1 = event;
             this.cardFlip(event);
-            event.removeEventListener("click", this.cardClick);   // Disable to commit user to this card
+
             return;
         }
         // Since it's the second card, see if there's a match 
         this.card2 = event;     // save for now
         this.cardFlip(event);
-        event.removeEventListener("click", this.cardClick);   // Disable to commit user to this card
 
-        //if (this.card1
-        // Add them back 
-        /*
-        this.card1.addEventListener('click', () => {
-            this.cardClick(this.card1);
-        });*/
     }
+
+    handleEvent(event) {
+        event.currentTarget.removeEventListener("click", this);
+        console.log(event);
+        event.currentTarget.addEventListener("click", this);
+    }
+
 
 
     /**
@@ -128,48 +128,52 @@ class Board {
  * 
  * Adds all click listers to the cards 
  * Note the was listenrs needed to be associated.  
+ * Note: https://dev.to/rikschennink/the-fantastically-magical-handleevent-function-1bp4
  */
     addAllListeners() {
-       let htmlCards = Array.from(document.getElementsByClassName('flip-card'));
+        let htmlCards = Array.from(document.getElementsByClassName('flip-card'));
 
         htmlCards.forEach(card => {
+            card.addEventListener('click', this);
+            /*
             card.addEventListener('click', () => {
                 this.cardClick(card);
             });
-    });
-        console.log("added listener"); 
-   
+            */
+        });
+        console.log("added listener");
+
     }
 
-};     
 
-        /*  CLEAN UP.  This was all of the unsuccessful attempst to add an event listener to a 2 deep level class.  
-        Document this 
 
-        this.cards.forEach(card => {
-            card.htmlElement.addEventListener('click', () => {
-                card.board.cardFlip(card);
-            });
+    /*  CLEAN UP.  This was all of the unsuccessful attempst to add an event listener to a 2 deep level class.  
+    Document this 
+
+    this.cards.forEach(card => {
+        card.htmlElement.addEventListener('click', () => {
+            card.board.cardFlip(card);
         });
-     
-        let index = 0;
-        for (index = 0; index < this.cards.length; index++) {
-            this.cards[index].htmlElement.addEventListener('click', this.cardFlip);
-        }
-            */
+    });
+ 
+    let index = 0;
+    for (index = 0; index < this.cards.length; index++) {
+        this.cards[index].htmlElement.addEventListener('click', this.cardFlip);
+    }
+        */
 
-        //this.cards.forEach(function(thecard) {
+    //this.cards.forEach(function(thecard) {
 
-        // https://stackoverflow.com/questions/30446622/es6-class-access-to-this-with-addeventlistener-applied-on-method
-        // card.htmlElement.addEventListener('click', this.cardFlip);
-        // card.htmlElement.addEventListener('click', ev => cardFlip(ev));
-        //card.htmlElement.addEventListener('click', evt => console.log(evt));
-        //card.htmlElement.addEventListener('click', this.cardFlip.bind(this));
+    // https://stackoverflow.com/questions/30446622/es6-class-access-to-this-with-addeventlistener-applied-on-method
+    // card.htmlElement.addEventListener('click', this.cardFlip);
+    // card.htmlElement.addEventListener('click', ev => cardFlip(ev));
+    //card.htmlElement.addEventListener('click', evt => console.log(evt));
+    //card.htmlElement.addEventListener('click', this.cardFlip.bind(this));
 
-        //this.cardFlip() = this.cardFlip.bind(this);
-        // thecard.htmlElement.addEventListener('click', this.cardFlip);
+    //this.cardFlip() = this.cardFlip.bind(this);
+    // thecard.htmlElement.addEventListener('click', this.cardFlip);
 
-        // });
+    // });
 
-
+};
 
