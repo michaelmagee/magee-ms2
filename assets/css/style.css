@@ -171,17 +171,19 @@ header {
     }
 }
 
-/*    Try these too
+/*  Left to right 
+@keyframes wiggle2 {
     20%  { transform: translateX(4px);  }
     40%  { transform: translateX(-4px); }
     60%  { transform: translateX(2px);  }
     80%  { transform: translateX(-1px); }
     100% { transform: translateX(0);    }
   }
-*/
+ */ 
 
-.wiggle:hover {
-    animation: wiggle .4s ease;
+/*  Circular wiggle  */ 
+.wiggle1s {
+    animation: wiggle 1.0s ease;
     animation-iteration-count: 1;
 }
 

@@ -10,11 +10,11 @@
 
 class Timer {
 
-    constructor() {
+    constructor(gameDuration) {
         this.FULL_DASH_ARRAY = 283;
         this.WARNING_THRESHOLD = 10;
         this.ALERT_THRESHOLD = 5;
-        this.TIME_LIMIT = 10;
+        this.TIME_LIMIT = gameDuration;
         this.timePassed = 0;
         this.timeLeft = this.TIME_LIMIT;
         this.timerInterval = null;

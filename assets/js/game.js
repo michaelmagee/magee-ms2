@@ -10,12 +10,16 @@
 
 class Game {
 
-    constructor(gameName, gameLevelType, cardCount, cardValues) {
+    constructor(gameName, gameLevelType, cardCount, cardValues, gameDuration) {
         this.name = gameName;
         this.type = gameLevelType;
         this.cardCount = cardCount;
         this.cardValues = cardValues;
-        this.timer= new Timer();
+        this.gameDuration = gameDuration;
+        this.timer= new Timer(gameDuration);
+        this.board = this.addBoard(this, gameLevelType, cardCount);
+        this.winCount = 0;
+        this.loseCount = 0; 
         console.log("constructor for Game complete");
     }
 
@@ -64,7 +68,13 @@ class Game {
         console.log("Timer started");
     }
 
+    gameWon() {
+        this.winCount++;
+        console.log("  Won that one!  ");
+    }
+
     gameLost() {
+        this.loseCount++; 
         console.log("  Lost that one!  ");
     }
 
@@ -81,19 +91,13 @@ class Game {
         newBoard.addCards(shuffledCards);
 
         newBoard.addAllListeners();
+        this.timer.resetTimer();        
+        this.timer.setHTML();
+
+        this.timer.startTimer(this.gameLost);
         return newBoard;
     }
 
-    /* I caught a duplicate here */
-    shuffle_ng(unshuffled) {
-        let shuffled = unshuffled
-            .map((a) => ({ sort: Math.random(), value: a }))
-            .sort((a, b) => a.sort - b.sort)
-            .map((a) => a.value);
-        console.log("Unshuffled: " + ROMANNUMERALS);
-        console.log("Reshuffled: " + shuffled);
-        return shuffled;
-    }
 
     shuffle(array) {
 
@@ -115,9 +119,5 @@ class Game {
         console.log("After Shuffle:" + array);
         return array;
     }
-    /*   Temporary */
-    dumpGame() {
-        // Code to format/dump myself to the log.
-        console.log(this);
-    }
+
 }

@@ -23,7 +23,7 @@ class Board {
     }
 
     /**
-     * @method: cardClick
+     * @method: handleEvent
      * @param {event} event - The card clicked.
      * Processes a card click event
      * for 1st card in set:
@@ -44,27 +44,32 @@ class Board {
             this.card1 = theCard;
             this.cardFlip(theCard);
             this.card1.removeEventListener("click", this);
-            this.matchInProcess == false;
+            this.matchInProcess = false;
             return;
         }
 
 
         // Since it's the second card, see if there's a match 
         // no need to remove the listener because matchInProcess is true.
-        this.matchInProcess == true;
+        this.matchInProcess = true;
         this.card2 = theCard;               // save for now
         this.cardFlip(theCard);
         if (this.isMatch(this.card1, this.card2)) {
-
-            //$("#" + this.card1.id).addClass("opaque-overlay-card");
-            //$("#" + this.card2.id).addClass("opaque-overlay-card");
-            this.card1.removeEventListener("click", this);
+            // consider opaque style here  
+            this.card1.removeEventListener("click", this);   // These cards no longer clickable
             this.card2.removeEventListener("click", this);
-            this.card1 = null;
-            this.card2 = null;
-            this.matchInProcess == false;
-            this.cardSetsUnmatched--;
-            console.log("MATCHED");
+
+            this.wiggle(this.card1, this.card2, "wiggle1s", 1100);
+            setTimeout(() => {
+                this.card1 = null;
+                this.card2 = null;
+                this.matchInProcess = false;
+                this.cardSetsUnmatched--;
+                if (this.cardSetsUnmatched == 0) {      // Won the GAME!
+                    this.game.timer.stopTimer();
+                    this.game.gameWon();
+                }
+            }, 1300);
         } else {
             console.log("NOPE");
             // Unwind  it
@@ -75,7 +80,7 @@ class Board {
                 this.card1.addEventListener("click", this);
                 this.card1 = null;
                 this.card2 = null;
-                this.matchInProcess == false;
+                this.matchInProcess = false;
             }, 1000);
         }
 
@@ -122,14 +127,19 @@ class Board {
     /**
  * @method: wiggle
  * 
- * @param {card} card - The card that needs to be wiggled.  Planned for Hints
- * 
- * Wiggle a card as a match hint
+ * @param {card} card - The card that needs to be wiggled.  Planned for Hints and emphasis 
+ * @param {card} card - The card that needs to be wiggled.  Planned for Hints and emphasis 
+ * @param {duration} ms of wiggle.
+ * Wiggle a pair of cards.  Can be used for a hint or as a match indication
  */
-    wiggle() {
-        /*
-        $("#card-easy-1").addClass("wiggle");
-        */
+    wiggle(card1, card2, style, duration) {
+
+        $(`#${card2.id}`).addClass(style);
+        $(`#${card1.id}`).addClass(style);
+        setTimeout(() => {
+            $(`#${card1.id}`).removeClass(style);
+            $(`#${card2.id}`).removeClass(style);
+        }, duration);
     }
 
     /**
