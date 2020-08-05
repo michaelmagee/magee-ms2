@@ -56,6 +56,35 @@ header {
     /* Subtle */
 }
 
+/* --------------------     Game Control    -------------------------*/
+.score-area{
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+/*
+*/
+.score-line-won{
+    position: relative;
+    font-size: 125%;
+    width: 200px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    background-color: green;
+    border: 1px solid #000000;
+    text-align: left;
+}
+
+.score-line-lost{
+    position: relative;
+    font-size: 125%;
+    width: 200px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    background-color: red;
+    border: 1px solid #000000;
+    text-align: left;
+}
 /* --------------------     Card Styles    -------------------------*/
 
 .opaque-overlay-card {
@@ -204,6 +233,10 @@ Large devices (desktops, 992px and up)
 Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }*/
 
+.timer-row {
+    margin-left: auto; 
+    margin-right: auto;
+}
 /*
 // Credit: Mateusz Rybczonec 
 */

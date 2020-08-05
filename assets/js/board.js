@@ -184,8 +184,11 @@ class Board {
             this.boardElement.innerHTML += card.getHTML();
             card.htmlElement = document.getElementById(card.htmlId);
         }
-        this.cardSetsUnmatched = shuffledCards.length / 2;
+        this.cardSetsUnmatched = shuffledCards.length / 2;  // Set number of pairs to match
     }
+
+
+
 
     /**
  * @method: addAllListeners

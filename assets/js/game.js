@@ -19,7 +19,7 @@ class Game {
         this.timer= new Timer(gameDuration);
         this.board = this.addBoard(this, gameLevelType, cardCount);
         this.winCount = 0;
-        this.loseCount = 0; 
+        this.lossCount = 0; 
         console.log("constructor for Game complete");
     }
 
@@ -36,14 +36,6 @@ class Game {
         button2.addEventListener('click', () => {
             this.button2Click();
         });
-        let button3 = document.getElementById("button3");
-        button3.addEventListener('click', () => {
-            this.button3Click();
-        });
-        let button4 = document.getElementById("button4");
-        button4.addEventListener('click', () => {
-            this.button4Click();
-        });
     };
 
 
@@ -51,30 +43,23 @@ class Game {
     just wire the buttons up at the game level for now   DOCUMENT THESE
     */
     button1Click() {
-        console.log("Button1 Clicked");
+        this.timer.stopTimer();
+        console.log("Timer paused");
     }
     button2Click() {
-        console.log("Button2 Clicked");
-    }
-    button3Click() {
-        this.timer.stopTimer(); 
-        console.log("Button3 Clicked");
-    }
-    button4Click() {
-        this.timer.resetTimer();        
-        this.timer.setHTML();
-
         this.timer.startTimer(this.gameLost);
-        console.log("Timer started");
+        console.log("Timer Started");
     }
 
     gameWon() {
         this.winCount++;
+        $("#win-count span").text(`${this.winCount}`);
         console.log("  Won that one!  ");
     }
 
     gameLost() {
         this.loseCount++; 
+        $("#loss-count span").text(`${this.lossCount}`);
         console.log("  Lost that one!  ");
     }
 

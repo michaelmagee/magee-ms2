@@ -30,28 +30,50 @@
 
 
     <div id="game-section">
-      
-            
-        <div class="container">
-            <div id="game-control" class="row">
-                <div class= "col"></div> 
-                <div  class="style-me-button">
-                    <button id="button1" class="style-me" type="button" >Button1</button>
-                </div>
-                <div  class="style-me-button">
-                    <button id="button2" class="style-me" type="button" >Button2</button>
-                </div>
-                <div  class="style-me-button">
-                    <button id="button3" class="style-me" type="button" >Stop Timer</button>
-                </div>
-                <div  class="style-me-button">
-                    <button id="button4" class="style-me" type="button" >Start Timer</button>
-                </div>
-                <div id="app"></div>      <!-- // Credit: Mateusz Rybczonec -->
-            </div>  <!-- row  -->
 
+
+        <div class="score-area d-inline-block">
+            <div >
+                <h3 id="win-count" class="score-line-won">Games WON: <span class="score-line-text">0</span></h3>
+            </div>
+            <div >
+                <h3 id="loss-count"class="score-line-lost">Games LOST: <span class="score-line-text">0</span></h3>
             </div>
         </div>
+
+    </div>
+
+    <div class="container">
+
+        <div i class="row">
+            <div class="col "></div>
+            <div id="timer" class="style=me-timer"></div> <!-- // Credit: Mateusz Rybczonec -->
+        </div> <!-- row  -->
+        <div id="game-control" class="row">
+
+
+            <div class="col"></div>
+
+            <div class="form-check-inline">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input active" name="optradio" checked="">Easy Game
+                </label>
+            </div>
+            <div class="form-check-inline">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optradio">Hard Game
+                </label>
+            </div>
+
+
+            <div class="style-me-button">
+                <button id="button1" class="style-me" type="button">START</button>
+            </div>
+
+        </div> <!-- row  -->
+
+    </div>
+    </div>
 
 
     <section id="board-section">
@@ -77,7 +99,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
-    <script src="assets/js/timer.js"></script>     <!-- // Credit: Mateusz Rybczonec -->
+    <script src="assets/js/timer.js"></script> <!-- // Credit: Mateusz Rybczonec -->
     <script src="assets/js/game.js"></script>
     <script src="assets/js/board.js"></script>
     <script src="assets/js/card.js"></script>
