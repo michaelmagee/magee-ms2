@@ -78,8 +78,8 @@ class Timer {
         this.notifyLossFunction();
     }
 
-    startTimer(notifyLoss) {
-        this.notifyLossFunction = notifyLoss;
+    startTimer(notifyLossMethod, lossCounterOwner) {
+        this.notifyLossFunction = notifyLossMethod;
         this.timerInterval =  setInterval(() => {
             this.timePassed = this.timePassed += 1;
             this.timeLeft = this.TIME_LIMIT - this.timePassed;
@@ -90,6 +90,11 @@ class Timer {
             this.setRemainingPathColor(this.timeLeft);
 
             if (this.timeLeft === 0) {
+                // Mike Document this hack, 
+                if (arguments.length === 2) {
+                    lossCounterOwner.lossCount++;
+                    $("#loss-count span").text(`${lossCounterOwner.lossCount}`);
+                }
                 this.onTimesUp();
             }
         }, 1000);
