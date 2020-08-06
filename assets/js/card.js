@@ -5,6 +5,8 @@
  * @param {string} type - The level type of the card.
  * @param {string} htmlID - The the HTML id of the card.
  * @param {string} cardvalue - The value of the card.
+ * 
+ * TODO: add getters and setters 
  */
 
 class Card {
@@ -27,24 +29,15 @@ class Card {
                 </div>
             </div>
         </div>`;
-        // DEBUG console.log("Constructor for Card completed: " + htmlId);
     }
 
     /**
- * Represents a card.
- * @returns {string} HTML - The  HTML id of the card.
- */
-
+     * @method: getHTML
+     * @returns {HTML}  html that represents this card on the board
+     * Adds a card  
+     */
     getHTML() {
         return this.innerHtml;
     }
 
-
-    /**
-     * Card test method for developent.
-     */
-    hello() {
-        console.log(`Hello from card ${this.htmlId}, and I'm ${this.type}  with a value of ${this.cardValue} !`);
-
-    }
 }

@@ -6,6 +6,7 @@
  * @param {string} type - The level type of the card.
  * @param {string} cardcount - Number of cards in the game.
  * 
+ * TODO: add getters and setters 
  */
 class Board {
 
@@ -71,9 +72,7 @@ class Board {
                 }
             }, 1300);
         } else {
-            console.log("NOPE");
-            // Unwind  it
-
+            // Unwind it by flipping both cards back 
             setTimeout(() => {
                 this.cardFlip(this.card1);
                 this.cardFlip(this.card2);
@@ -81,18 +80,9 @@ class Board {
                 this.card1 = null;
                 this.card2 = null;
                 this.matchInProcess = false;
-            }, 1000);
+            }, 900);
         }
 
-
-
-
-
-        /*
-                event.currentTarget.removeEventListener("click", this);
-                console.log(event);
-                event.currentTarget.addEventListener("click", this);
-        */
     }
 
     /**
@@ -105,8 +95,6 @@ class Board {
     isMatch(card1, card2) {
         let card1ValueID = "#" + card1.id + "-value"; // document.getElementById(card1.id + "-value"); 
         let card2ValueID = "#" + card2.id + "-value" // document.getElementById(card2.id + "-value");
-        let card1value = $(card1ValueID).text();
-        let card2value = $(card2ValueID).text();
 
         let result = $(card1ValueID).text() == $(card2ValueID).text();
 
@@ -175,8 +163,9 @@ class Board {
 
     /**
  * @method: addCards
- * @param {[shuffledCards]]} card values  - Shuffled array of cards
- * uses defined card count to create all new cards PARAMS TBD 
+ * @param {[shuffledCards]]} card values  - Shuffled array of card values
+ * Instantiates a card for each of the shuffled values 
+ * appends that card's html to the board html
  */
     addCards(shuffledCards) {
         for (var i = 0; i < this.cardCount; i++) {
@@ -186,8 +175,6 @@ class Board {
         }
         this.cardSetsUnmatched = shuffledCards.length / 2;  // Set number of pairs to match
     }
-
-
 
 
     /**

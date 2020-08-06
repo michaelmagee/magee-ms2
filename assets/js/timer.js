@@ -6,11 +6,13 @@
  * @classdesc: Represents a Timer .   
  * @constructs
  * 
+ * Modified as a class by me, added some minor code in for event completion 
  */
 
 class Timer {
 
-    constructor(gameDuration) {
+    constructor(gameDuration, game) {
+        this.game = game;
         this.FULL_DASH_ARRAY = 283;
         this.WARNING_THRESHOLD = 10;
         this.ALERT_THRESHOLD = 5;
@@ -78,6 +80,20 @@ class Timer {
         this.notifyLossFunction();
     }
 
+        /**
+     * @method: startTimer
+     * 
+     * @param {Method} Callback method to handle timer popped event
+     * @param {Method} Callback method to get timer popped event
+     * Core timer loop.  
+     * if timer expires, (timer can be cancelled in the game, so this may not be called) 
+     * calls the  notifyLossMethod method in param1
+     * However it operates in it's own space so the this of the called is undefined. 
+     * This means that the game never "knows" the timer popped. 
+     * I got around this by carrying the callback owner in the constructor and updating it,
+     * as well as updating the UI. 
+     * It's clear that ALl of my classes should have had true getters and setters. 
+     */
     startTimer(notifyLossMethod, lossCounterOwner) {
         this.notifyLossFunction = notifyLossMethod;
         this.timerInterval =  setInterval(() => {
@@ -93,6 +109,7 @@ class Timer {
                 // Mike Document this hack, 
                 if (arguments.length === 2) {
                     lossCounterOwner.lossCount++;
+                    this.game.boardReady = false;
                     $("#loss-count span").text(`${lossCounterOwner.lossCount}`);
                 }
                 this.onTimesUp();
