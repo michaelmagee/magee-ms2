@@ -117,4 +117,19 @@ class Card {
         this._htmlId = htmlid;
     }
 
+     /**
+     * @method: get cardValue
+     * @returns {text}  Value of the card
+     */
+    get cardValue() {
+        return this._cardValue;
+    }
+    /**
+    * @method: set cardValue
+    * @param {text}  Value for the new ID
+    */
+    set cardValue(value) {
+        // No need for this
+        return; 
+    }
 }

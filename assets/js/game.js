@@ -19,6 +19,7 @@ class Game {
         this.gameDuration = 0;  // Active game parameters for adding a board 
         this.gameCardCount = 0;
         this.gameCards = [];
+        this.gameHints = 0;     // max hints for that game
 
         this.winCount = 0;
         this.lossCount = 0;
@@ -30,6 +31,7 @@ class Game {
         this.easyDuration = 60;  // 60 seconds for the easy game 
         this.easyCardCount = 12;
         this.easyCards = ["1", "2", "3", "4", "5", "6", "1", "2", "3", "4", "5", "6"];
+        this.easyHints = 2;
 
         // "Hard" game 
         this.hardType = "Hard";
@@ -37,6 +39,7 @@ class Game {
         this.hardCardCount = 24;
         this.hardCards = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII",
             "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
+        this.hardHints = 5;
 
         this.timer = null;
 
@@ -56,10 +59,15 @@ class Game {
         button1.addEventListener('click', () => {
             this.startButtonClick();
         });
+
+        /* Let this be handled in biard 
         let button2 = document.getElementById("hintButton");
         button2.addEventListener('click', () => {
             this.hintButtonClick();
         });
+            */
+        $("#hintButton").attr("disabled", true);  // disabled unless a card is in play. 
+
 
         /* keep gamelevel updated. 
         If user selects a new game type ( a Change ) via radio button, the gameboard is regenerated
@@ -88,17 +96,21 @@ class Game {
         $("#easyRadio").attr("disabled", true);
         $("#hardRadio").attr("disabled", true);
         this.timer.startTimer(this.gameLost, this);
+        this.board.gamestarted = true; 
     }
 
-    /**
+    /**   Handle in Board 
         * @method: hintButtonClick  
-        * Describe what this will be  
-        */
+        * Decrement the available hints
+        * Obtain the id of the single flipped card  
+       
     hintButtonClick() {
 
 
         console.log("Hint Button");
     }
+
+    
 
     /**
         * @method: gameWon  
@@ -112,6 +124,7 @@ class Game {
         $("#startButton").attr("disabled", false);
         $("#easyRadio").attr("disabled", false);
         $("#hardRadio").attr("disabled", false);
+        $("#hintButton").attr("disabled", true);
         $("#startButton").html("Restart");              // will allow a restart of same gamelevel
     }
 
@@ -130,6 +143,7 @@ class Game {
         $("#startButton").attr("disabled", false);
         $("#easyRadio").attr("disabled", false);
         $("#hardRadio").attr("disabled", false);
+        $("#hintButton").attr("disabled", true);
         $("#startButton").html("Restart");
         console.log("  Lost that one!  ");
     }
@@ -157,14 +171,16 @@ class Game {
             this.gameDuration = this.easyDuration;
             this.gameCardCount = this.easyCardCount;
             this.gameCards = this.easyCards;
+            this.gameHints = this.easyHints;
         } else {
             this.gameType == "Hard";
             this.gameDuration = this.hardDuration;
             this.gameCardCount = this.hardCardCount;
             this.gameCards = this.hardCards;
+            this.gameHints = this.hardHints;
         }
 
-        let newBoard = new Board(this, this.gameType, this.gameCardCount);
+        let newBoard = new Board(this, this.gameType, this.gameCardCount, this.gameHints);
         let shuffledCards = this.shuffle(this.gameCards);
         newBoard.addCards(shuffledCards);
 

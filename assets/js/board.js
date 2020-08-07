@@ -10,16 +10,23 @@
  */
 class Board {
 
-    constructor(game, type, cardcount) {
+    constructor(game, type, cardcount, hintsAllowed) {
         this.game = game;
         this.type = type;
         this.cardCount = cardcount;
         this.cards = [];
         this.cardSetsUnmatched = 0;
-        this.card1 = null;      // First card in challenge set 
-        this.card2 = null;      // Second card in challenge set 
+        this.card1 = null;          // First card in challenge set 
+        this.card2 = null;          // Second card in challenge set 
+        this.hintMatch = null;      // Hint card - the match of card1 
+        this.hintDecoy = null;      // Random card for second of hint pair 
+
         this.matchInProcess = false;
+        this.hintInProcess = false;
+        this.hintsAvailable = hintsAllowed; // each game has some hints 
+        $("#hint-count span").text(`${this.hintsAvailable}`);
         this.boardElement = document.getElementById("gameboard");
+        this.gamestarted = false;
 
     }
 
@@ -30,22 +37,40 @@ class Board {
      * for 1st card in set:
      * - flip it and disble listener to commit user to card
      * - set matchInProcess false to allow a second card to be selected
+     * - indicate card is flipped 
      * - return
      * for 2nd card in set: 
      * - set matchInProcess true to ignore devious clicks
      * - flip it
+     * - indicate card is flipped 
+     * 
+     * - Compare the values for a match and if true indicate both are matched & wiggle them.
+     * - if not indicate they arr not flipped, flip them back and unlock them
+     * 
      */
     handleEvent(event) {
 
-        if (this.matchInProcess) return;    // ignore clicks while card animation occurs
+        if (this.matchInProcess || !this.gamestarted) return;    // ignore clicks while card animation occurs
+
+        if (event.currentTarget.id == "hintButton") {
+            this.displayHint();
+            return;
+        }
 
         let theCard = event.currentTarget;
-        // If it's the first card clicked, just save it and disable it
+        // If it's the first card clicked, just save it and disable it  Enable the hint button if valid 
         if (this.card1 === null) {
             this.card1 = theCard;
             this.cardFlip(theCard);
             this.card1.removeEventListener("click", this);
+            this.getCardByID(this.card1.id).flipped = true;
             this.matchInProcess = false;
+
+            // enable the hint button if we have some left and there are 2 or more pairs unmatched
+            if (this.cardSetsUnmatched > 1 && this.hintsAvailable > 0) {
+                $("#hintButton").attr("disabled", false);
+            }
+
             return;
         }
 
@@ -54,11 +79,16 @@ class Board {
         // no need to remove the listener because matchInProcess is true.
         this.matchInProcess = true;
         this.card2 = theCard;               // save for now
+        $("#hintButton").attr("disabled", true);  // Hint is off the table 
         this.cardFlip(theCard);
+        this.getCardByID(this.card2.id).flipped = true;
         if (this.isMatch(this.card1, this.card2)) {
             // consider opaque style here  
             this.card1.removeEventListener("click", this);   // These cards no longer clickable
             this.card2.removeEventListener("click", this);
+
+            this.getCardByID(this.card1.id).matched = true;
+            this.getCardByID(this.card2.id).matched = true;
 
             this.wiggle(this.card1, this.card2, "wiggle1s", 1100);
             setTimeout(() => {
@@ -76,6 +106,8 @@ class Board {
             setTimeout(() => {
                 this.cardFlip(this.card1);
                 this.cardFlip(this.card2);
+                this.getCardByID(this.card1.id).flipped = false;
+                this.getCardByID(this.card1.id).flipped = false;
                 this.card1.addEventListener("click", this);
                 this.card1 = null;
                 this.card2 = null;
@@ -94,8 +126,8 @@ class Board {
      */
     isMatch(card1, card2) {
 
-        let card1ValueID = `#${card1.id}-value`; 
-        let card2ValueID = `#${card2.id}-value`; 
+        let card1ValueID = `#${card1.id}-value`;
+        let card2ValueID = `#${card2.id}-value`;
 
         return $(card1ValueID).text() == $(card2ValueID).text();
     }
@@ -129,13 +161,69 @@ class Board {
         }, duration);
     }
 
+
     /**
-     * @method: getCardByID
+     * @method: displayHint
+     * We have this.card1 flipped
+     * We need to obtain the match for it and select an eligble card at random to present with it. 
+     * 
+
+     */
+    displayHint() {
+        this.hintsAvailable--;
+        if (this.hintsavailable == 0) return;  // SNO - enabled handled in Game
+
+        this.hintInProcess = true;
+        let card1Value = this.getCardByID(this.card1.id).cardValue;
+        this.hintMatchCard = this.getCardByValue(this.card1.id, card1Value);
+        this.hintDecoyCard = this.getDecoyCard(card1Value);
+        console.log("Decoy found: " + this.hintDecoyCard);
+    }
+
+    /**
+     * @method: getDecoyCard
      * 
      * @param {card} card - The card that needs to be wiggled.  Planned for Hints
      * @returns {text}  htmlID of card
      * Wiggle a card as a match hint
      */
+    getDecoyCard(flippedCardValue) {
+        // First filter the array to remove non candidate cards
+        let eligbleCards = this.cards.filter(card => {
+            if (card.matched || card.cardValue == flippedCardValue) {
+                return false;
+            } else return true;
+        })
+        return this.randomCard(eligbleCards);
+    }
+
+
+
+    /**
+     * @method: getCardByValue
+     * 
+     * @param {card} card - The card that needs to be wiggled.  Planned for Hints
+     * @returns {text}  htmlID of card
+     * Wiggle a card as a match hint  //(!this.cards[i].htmlID == flippedCardID) &&
+     */
+    getCardByValue(flippedCardID, flippedCardValue) {
+        let foundCard = null;
+        for (var i = 0; i < this.cards.length; i++) {
+            if ((this.cards[i].cardValue == flippedCardValue) && (this.cards[i].htmlID != flippedCardID)) {
+                foundCard = this.cards[i];
+                break;
+            }
+        }
+        return foundCard;
+    }
+
+    /**
+    * @method: getCardByID
+    * 
+    * @param {card} card - The card that needs to be wiggled.  Planned for Hints
+    * @returns {text}  htmlID of card
+    * Wiggle a card as a match hint
+    */
     getCardByID(htmlId) {
         let foundCard = null;
         for (var i = 0; i < this.cards.length; i++) {
@@ -146,6 +234,25 @@ class Board {
         }
         return foundCard;
     }
+
+    /**
+        * @method: randomCard  
+        * @param {array} array - The card valued in defined order.
+        * @returns {card}  The first card in the random array  
+        * See description of shuffle in game.js
+        */
+    randomCard(array) {
+
+        let m = array.length, t, i;
+        while (m) {
+            i = Math.floor(Math.random() * m--);
+            t = array[m];
+            array[m] = array[i];
+            array[i] = t;
+        }
+        return array[0];     // return the first card of the random order array 
+    }
+
 
     /**
      * @method: addCard
@@ -161,16 +268,16 @@ class Board {
     }
 
     /**
- * @method: addCards
- * @param {[shuffledCards]]} card values  - Shuffled array of card values
- * Instantiates a card for each of the shuffled values 
- * appends that card's html to the board html
- */
+    * @method: addCards
+    * @param {[shuffledCards]]} card values  - Shuffled array of card values
+    * Instantiates a card for each of the shuffled values 
+    * appends that card's html to the board html
+    */
     addCards(shuffledCards) {
         for (var i = 0; i < this.cardCount; i++) {
             let card = this.addCard(this, this.type, `card-${this.type}-${i}`, shuffledCards[i]);
-            
-            this.boardElement.innerHTML += card.innerHtml; 
+
+            this.boardElement.innerHTML += card.innerHtml;
             card.htmlElement = document.getElementById(card.htmlId);
         }
         this.cardSetsUnmatched = shuffledCards.length / 2;  // Set number of pairs to match
@@ -178,17 +285,20 @@ class Board {
 
 
     /**
- * @method: addAllListeners
- * 
- * Adds all click listeners to all cards 
- 
- */
+    * @method: addAllListeners
+    * 
+    * Adds all click listeners to all cards 
+     
+    */
     addAllListeners() {
         let htmlCards = Array.from(document.getElementsByClassName('flip-card'));
 
         htmlCards.forEach(card => {
             card.addEventListener('click', this);
         });
+
+        // Add the Hint Button Listener
+        document.getElementById("hintButton").addEventListener('click', this);
 
     }
 

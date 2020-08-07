@@ -85,6 +85,17 @@ header {
     border: 1px solid #000000;
     text-align: left;
 }
+
+.score-line-hints{
+    position: relative;
+    font-size: 125%;
+    width: 200px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    background-color: blue;
+    border: 1px solid #000000;
+    text-align: left;
+}
 /* --------------------     Card Styles    -------------------------*/
 
 .opaque-overlay-card {

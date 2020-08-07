@@ -72,7 +72,7 @@ class Timer {
     };
 
     stopTimer() {
-        clearInterval(this.timerInterval);   // Does it work? 
+        clearInterval(this.timerInterval);   
     }
 
     onTimesUp() {
