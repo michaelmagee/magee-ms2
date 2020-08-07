@@ -6,7 +6,7 @@
  * @param {string} type - The level type of the card.
  * @param {string} cardcount - Number of cards in the game.
  * 
- * TODO: add getters and setters 
+ * TODO: add getters and setters
  */
 class Board {
 
@@ -93,10 +93,9 @@ class Board {
      * Processes a card click event
      */
     isMatch(card1, card2) {
-        let card1ValueID = "#" + card1.id + "-value"; // document.getElementById(card1.id + "-value"); 
-        let card2ValueID = "#" + card2.id + "-value" // document.getElementById(card2.id + "-value");
 
-        let result = $(card1ValueID).text() == $(card2ValueID).text();
+        let card1ValueID = `#${card1.id}-value`; 
+        let card2ValueID = `#${card2.id}-value`; 
 
         return $(card1ValueID).text() == $(card2ValueID).text();
     }
@@ -140,7 +139,7 @@ class Board {
     getCardByID(htmlId) {
         let foundCard = null;
         for (var i = 0; i < this.cards.length; i++) {
-            if (this.cards[i].htmlId == htmlId) {
+            if (this.cards[i].htmlID == htmlId) {
                 foundCard = this.cards[i];
                 break;
             }
@@ -170,7 +169,8 @@ class Board {
     addCards(shuffledCards) {
         for (var i = 0; i < this.cardCount; i++) {
             let card = this.addCard(this, this.type, `card-${this.type}-${i}`, shuffledCards[i]);
-            this.boardElement.innerHTML += card.getHTML();
+            
+            this.boardElement.innerHTML += card.innerHtml; 
             card.htmlElement = document.getElementById(card.htmlId);
         }
         this.cardSetsUnmatched = shuffledCards.length / 2;  // Set number of pairs to match

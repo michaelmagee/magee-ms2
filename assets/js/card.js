@@ -6,23 +6,27 @@
  * @param {string} htmlID - The the HTML id of the card.
  * @param {string} cardvalue - The value of the card.
  * 
- * TODO: add getters and setters 
  */
 
 class Card {
 
-    constructor(board, type, htmlId, cardvalue) {
-        this.board = board;
-        this.type = type;
-        this.htmlId = htmlId;
+    constructor(board, type, htmlId, cardvalue) {  // OK NOT to use settors for contructor params 
+        this._board = board;
+        this._type = type;
+        this._htmlId = htmlId;
+        this._valueID = "";        // use get/set because it's modified 
+        this._htmlElement;
+        this._cardValue = cardvalue;
+        this._flipped = false;
+        this._matched = false;
+        this._innerHtml = "";  
+
         this.valueID = `${htmlId}-value`;
-        this.htmlElement;
-        this.cardValue = cardvalue;
         this.innerHtml = `
-        <div id=${this.htmlId} class="flip-card">
+        <div id=${htmlId} class="flip-card">
             <div class="flip-card-container">
                 <div class="flip-card-back">
-                    <h2 id=${this.valueID} class="flip-card-back-text">${this.cardValue}</h2> 
+                    <h2 id=${this.valueID} class="flip-card-back-text">${cardvalue}</h2> 
                 </div>
                 <div class="flip-card-front">
                     <h2 class="flip-card-front-text">?</h2> 
@@ -32,12 +36,85 @@ class Card {
     }
 
     /**
-     * @method: getHTML
-     * @returns {HTML}  html that represents this card on the board
-     * Adds a card  
+ * @method: get innerHtml
+ * @returns {HTML}  html that represents this card on the board
+ */
+    get innerHtml() {
+        return this._innerHtml;
+    }
+
+    /**
+* @method: set innerHtml
+* @param {HTML}  html that represents this card on the board
+* Set's the innerHtml value 
+* Note: _ approach courtesy of https://coryrylan.com/blog/javascript-es6-class-syntax
+            card.flipped = true;
+            card.matched = false;
+*/
+    set innerHtml(newHtml) {
+        this._innerHtml = newHtml;
+    }
+
+
+    /**
+    * @method: get flipped
+    * @returns {boolean}  indicates that card is flipped 
+    */
+    get flipped() {
+        return this._flipped;
+    }
+    /**
+    * @method: set flipped
+    * @param {boolean}  true if card is flipped 
+    */
+    set flipped(bool) {
+        this._flipped = bool;
+    }
+
+    /**
+     * @method: get matched
+     * @returns {boolean}  indicates that card is flipped 
      */
-    getHTML() {
-        return this.innerHtml;
+    get matched() {
+        return this._matched;
+    }
+
+    /**
+    * @method: set matched
+    * @param {boolean}  true if card is flipped 
+    */
+    set matched(bool) {
+        this._matched = bool;
+    }
+
+        /**
+     * @method: get valueID
+     * @returns {text}  HTML ID of the Value
+     */
+    get valueID() {
+        return this._valueID;
+    }
+    /**
+    * @method: set valueID
+    * @param {text}  Value for the new ID
+    */
+    set valueID(value) {
+        this._valueID = value;
+    }
+
+            /**
+     * @method: get htmlID
+     * @returns {text}  HTML ID of the Value
+     */
+    get htmlID() {
+        return this._htmlId;
+    }
+    /**
+    * @method: set valueID
+    * @param {text}  Value for the new ID
+    */
+    set htmlID(htmlid) {
+        this._htmlId = htmlid;
     }
 
 }
