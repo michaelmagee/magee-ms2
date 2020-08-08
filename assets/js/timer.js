@@ -110,6 +110,7 @@ class Timer {
                 if (arguments.length === 2) {
                     lossCounterOwner.lossCount++;
                     this.game.boardReady = false;
+                    this.game.board.setGameOver(); 
                     $("#loss-count span").text(`${lossCounterOwner.lossCount}`);
                 }
                 this.onTimesUp();

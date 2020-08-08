@@ -18,11 +18,12 @@ class Board {
         this.cardSetsUnmatched = 0;
         this.card1 = null;          // First card in challenge set 
         this.card2 = null;          // Second card in challenge set 
-        this.hintMatch = null;      // Hint card - the match of card1 
-        this.hintDecoy = null;      // Random card for second of hint pair 
+        this.hintMatchCard = null;      // Hint card - the match of card1 
+        this.hintDecoyCard = null;      // Random card for second of hint pair 
 
         this.matchInProcess = false;
         this.hintInProcess = false;
+        this.GameOver = false; 
         this.hintsAvailable = hintsAllowed; // each game has some hints 
         $("#hint-count span").text(`${this.hintsAvailable}`);
         this.boardElement = document.getElementById("gameboard");
@@ -50,10 +51,10 @@ class Board {
      */
     handleEvent(event) {
 
-        if (this.matchInProcess || !this.gamestarted) return;    // ignore clicks while card animation occurs
+        if (this.matchInProcess || !this.gamestarted || this.GameOver) return;    // ignore clicks while card animation occurs & clock inactive
 
         if (event.currentTarget.id == "hintButton") {
-            this.displayHint();
+            this.displayHint();     // User clicked on Hint.  Process it. 
             return;
         }
 
@@ -75,13 +76,24 @@ class Board {
         }
 
 
-        // Since it's the second card, see if there's a match 
-        // no need to remove the listener because matchInProcess is true.
+        /* Since it's the second card, see if there's a match 
+           no need to remove the listener because matchInProcess is true.
+           If a HINT  is in process, this means that we need to unwind the hint 
+           and process the click. 
+        */ 
+        if (this.hintInProcess) {
+            this.hintInProcess = false; 
+            $(`#${this.hintMatchCard.htmlID}`).removeClass( "wiggle3s");
+            $(`#${this.hintDecoyCard.htmlID}`).removeClass("wiggle3s");
+        }
+
         this.matchInProcess = true;
         this.card2 = theCard;               // save for now
         $("#hintButton").attr("disabled", true);  // Hint is off the table 
         this.cardFlip(theCard);
         this.getCardByID(this.card2.id).flipped = true;
+
+        // Process a match 
         if (this.isMatch(this.card1, this.card2)) {
             // consider opaque style here  
             this.card1.removeEventListener("click", this);   // These cards no longer clickable
@@ -90,24 +102,26 @@ class Board {
             this.getCardByID(this.card1.id).matched = true;
             this.getCardByID(this.card2.id).matched = true;
 
-            this.wiggle(this.card1, this.card2, "wiggle1s", 1100);
-            setTimeout(() => {
+            this.wiggle(this.card1, this.card2, "wiggle1s", 1100);  // Wiggle 1 second
+            setTimeout(() => {                  // 
                 this.card1 = null;
                 this.card2 = null;
                 this.matchInProcess = false;
                 this.cardSetsUnmatched--;
                 if (this.cardSetsUnmatched == 0) {      // Won the GAME!
                     this.game.timer.stopTimer();
+                    this.SetGameOver; 
                     this.game.gameWon();
                 }
             }, 1300);
         } else {
+            // Not a match.  
             // Unwind it by flipping both cards back 
             setTimeout(() => {
                 this.cardFlip(this.card1);
                 this.cardFlip(this.card2);
                 this.getCardByID(this.card1.id).flipped = false;
-                this.getCardByID(this.card1.id).flipped = false;
+                this.getCardByID(this.card2.id).flipped = false;
                 this.card1.addEventListener("click", this);
                 this.card1 = null;
                 this.card2 = null;
@@ -171,13 +185,29 @@ class Board {
      */
     displayHint() {
         this.hintsAvailable--;
-        if (this.hintsavailable == 0) return;  // SNO - enabled handled in Game
+        $("#hint-count span").text(`${this.hintsAvailable}`);
+        if (this.hintsavailable == 0) {
+            $("#hintButton").attr("disabled", true);  // Hint is off the table  
+        }
 
         this.hintInProcess = true;
         let card1Value = this.getCardByID(this.card1.id).cardValue;
         this.hintMatchCard = this.getCardByValue(this.card1.id, card1Value);
         this.hintDecoyCard = this.getDecoyCard(card1Value);
-        console.log("Decoy found: " + this.hintDecoyCard);
+
+        // Now that we have match and decoy, wiggle them for up to 
+        this.wiggle(this.hintMatchCard.cardHtmlElement, this.hintDecoyCard.cardHtmlElement, "wiggle3s", 3100);  // Wiggle 3 seconds
+
+        setTimeout(() => {
+            // if  a card has been selected then don't unwind anything
+            if (this.hintInProcess == false) {
+                this.hintMatchCard = null;
+                this.hintDecoyCard = null;
+                this.hintMatchCard = false;
+                this.hintDecoyCard = false;
+            }
+        }, 2900);
+
     }
 
     /**
@@ -253,6 +283,14 @@ class Board {
         return array[0];     // return the first card of the random order array 
     }
 
+  /**
+     * @method: setGameOver
+     * 
+     * Sets game over to prevent further event processing until restart 
+     */
+    setGameOver() {
+        this.GameOver = true;
+    }
 
     /**
      * @method: addCard
@@ -278,7 +316,7 @@ class Board {
             let card = this.addCard(this, this.type, `card-${this.type}-${i}`, shuffledCards[i]);
 
             this.boardElement.innerHTML += card.innerHtml;
-            card.htmlElement = document.getElementById(card.htmlId);
+            card.cardHtmlElement = document.getElementById(card.htmlID);
         }
         this.cardSetsUnmatched = shuffledCards.length / 2;  // Set number of pairs to match
     }
@@ -296,7 +334,7 @@ class Board {
         htmlCards.forEach(card => {
             card.addEventListener('click', this);
         });
-
+        
         // Add the Hint Button Listener
         document.getElementById("hintButton").addEventListener('click', this);
 

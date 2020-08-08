@@ -211,21 +211,19 @@ header {
     }
 }
 
-/*  Left to right 
-@keyframes wiggle2 {
-    20%  { transform: translateX(4px);  }
-    40%  { transform: translateX(-4px); }
-    60%  { transform: translateX(2px);  }
-    80%  { transform: translateX(-1px); }
-    100% { transform: translateX(0);    }
-  }
- */ 
-
 /*  Circular wiggle  */ 
 .wiggle1s {
     animation: wiggle 1.0s ease;
     animation-iteration-count: 1;
 }
+
+
+.wiggle3s {
+    
+    animation: wiggle .7s ease;
+    animation-iteration-count: 5;
+}
+
 
 /*  ----------------------- Media Queries section  Taken from Bootstrap site */
 

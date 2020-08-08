@@ -31,7 +31,7 @@ class Game {
         this.easyDuration = 60;  // 60 seconds for the easy game 
         this.easyCardCount = 12;
         this.easyCards = ["1", "2", "3", "4", "5", "6", "1", "2", "3", "4", "5", "6"];
-        this.easyHints = 2;
+        this.easyHints = 3;
 
         // "Hard" game 
         this.hardType = "Hard";
@@ -39,7 +39,7 @@ class Game {
         this.hardCardCount = 24;
         this.hardCards = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII",
             "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
-        this.hardHints = 5;
+        this.hardHints = 6;
 
         this.timer = null;
 

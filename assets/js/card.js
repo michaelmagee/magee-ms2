@@ -132,4 +132,22 @@ class Card {
         // No need for this
         return; 
     }
+
+         /**
+     * @method: get cardValue
+     * @returns {text}  Value of the card
+     */
+    get cardHtmlElement() {
+        return this._htmlElement;
+    }
+    /**
+    * @method: set cardValue
+    * @param {text}  Value for the new ID
+    */
+    set cardHtmlElement(element) {
+        this._htmlElement = element;
+        return; 
+    }
+
+
 }
