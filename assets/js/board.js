@@ -83,7 +83,7 @@ class Board {
         */ 
         if (this.hintInProcess) {
             this.hintInProcess = false; 
-            $(`#${this.hintMatchCard.htmlID}`).removeClass( "wiggle3s");
+            $(`#${this.hintMatchCard.htmlID}`).removeClass("wiggle3s");
             $(`#${this.hintDecoyCard.htmlID}`).removeClass("wiggle3s");
         }
 
@@ -201,6 +201,8 @@ class Board {
         setTimeout(() => {
             // if  a card has been selected then don't unwind anything
             if (this.hintInProcess == false) {
+                $(`#${this.hintMatchCard.htmlID}`).removeClass("wiggle3s");
+                $(`#${this.hintDecoyCard.htmlID}`).removeClass("wiggle3s");
                 this.hintMatchCard = null;
                 this.hintDecoyCard = null;
                 this.hintMatchCard = false;
