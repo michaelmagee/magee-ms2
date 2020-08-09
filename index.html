@@ -28,70 +28,70 @@
         </div>
     </div>
 
+    <div id="score-section">
+        <div class="container">
+            <div class="row centered">
+                <div id="win-count" class="col-sm score-line-won">
+                    Games WON: <span class="score-line-text">0</span>
+                </div>
 
-    <div id="game-section">
+                <div id="loss-count" class="col-sm score-line-lost">
+                    Games LOST: <span class="score-line-text">0</span>
+                </div>
+                <div id="hint-count" class="col-sm score-line-hints">
+                    Hints Left: <span class="score-line-text">0</span>
+                </div>
 
-
-        <div class="score-area d-inline-block">
-            <div >
-                <h3 id="win-count" class="score-line-won">Games WON: <span class="score-line-text">0</span></h3>
-            </div>
-            <div >
-                <h3 id="loss-count" class="score-line-lost">Games LOST: <span class="score-line-text">0</span></h3>
-            </div>
-            <div >
-                <h3 id="hint-count" class="score-line-hints">Hints Left: <span class="score-line-text">0</span></h3>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="container">
-
-        <div i class="row">
-            <div class="col "></div>
-            <div id="timer" class="style=me-timer"></div> <!-- // Credit: Mateusz Rybczonec -->
-        </div> <!-- row  -->
-        <div id="game-control" class="row">
+                <div id="timer" class="col-sm style=me-timer ">
+                </div>
 
 
-            <div class="col"></div>
-
-            <div class="form-check-inline">
-                <label class="form-check-label">
-                    <input id="easyRadio" type="radio" class="form-check-input active" name="gamelevel" value="Easy" checked="">Easy Game
-                </label>
-            </div>
-            <div class="form-check-inline">
-                <label class="form-check-label">
-                    <input id="hardRadio"  type="radio" class="form-check-input" name="gamelevel" value="Hard" >Hard Game
-                </label>
-            </div>
+            </div> <!-- Row  -->
+        </div> <!-- Container  -->
+    </div> <!-- Score section  -->
 
 
-            <div class="style-me-button">
-                <button id="startButton" class="style-me" type="button">START</button>
-            </div>
-            <div class="style-me-button">
-                <button id="hintButton" class="style-me" type="button">HINT</button>
-            </div>
 
-        </div> <!-- row  -->
+    <div id="control-section">
+        <div id="game-control" class="container">
+            <div class="row">
 
-    </div>
-    </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input id="easyRadio" type="radio" class="form-check-input active" name="gamelevel" value="Easy"
+                            checked="">Easy Game
+                    </label>
+                </div>
+
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input id="hardRadio" type="radio" class="form-check-input" name="gamelevel" value="Hard">Hard
+                        Game
+                    </label>
+                </div>
+
+                <div>
+                    <button id="startButton" class="control-button" type="button">START</button>
+                </div>
+                <div>
+                    <button id="hintButton" class="control-button" type="button">HINT</button>
+                </div>
+            </div> <!-- row  -->
+        </div> <!--  "game-control" -->
+    </div> <!--  "control section" -->
+
+
 
 
     <section id="board-section">
         <div class="container">
+
             <div id="gameboard" class="row">
 
             </div>
         </div>
 
     </section>
-
-
 
 
 
