@@ -129,14 +129,21 @@ class Game {
         * re-enables all of the buttons to allow a restart or game change. 
         */
     gameWon() {
-        this.winCount++;
+        
         this.boardReady = false;                        // will render a new board
+        this.winCount++;
         $("#win-count span").text(`${this.winCount}`);
-        this.enable("#startButton");
-        this.enable("#easyRadio");
-        this.enable("#hardRadio");
-        this.disable("#hintButton");
-        $("#startButton").html("Restart");              // will allow a restart of same gamelevel
+
+        this.wiggleScore("#win-count", "wiggle2s", 2100);  // Wiggle 2 seconds
+         
+        setTimeout(() => {                  // 
+            this.enable("#startButton");
+            this.enable("#easyRadio");
+            this.enable("#hardRadio");
+            this.disable("#hintButton");
+            $("#startButton").html("Restart");              // will allow a restart of same gamelevel
+        }, 2100);
+
     }
 
     /**
@@ -166,6 +173,22 @@ class Game {
         $("#startButton").html("Restart");
     }
 
+
+        /**
+ * @method: wiggleCard
+ * 
+ * @param {Score ID}  - The score that needs to be wiggled.   
+ * @param {duration} ms of wiggle.
+ * Wiggle score area
+ */
+wiggleScore(score, style, duration) {
+
+    $(`${score}`).addClass(style);
+    setTimeout(() => {
+        $(`${score}`).removeClass(style);
+
+    }, duration);
+}
     //  NOTE: need to figure out how to destroy stuff before creating new board
     /**
      * @method: addBoard  
