@@ -12,8 +12,8 @@
 body {
     font-family: 'RobotoSlab', sans-serif;
     /* Base font and color  */
-    color: whitesmoke;
-    background-color: #8f8f8f;
+    color: black;
+    background-color: whitesmoke;
     ;
 }
 
@@ -34,6 +34,11 @@ h1, h2, h3, h4 {
     text-transform: uppercase;
 }
 
+.row {
+    margin-left: 0;
+    margin-right: 0;;
+}
+
 /*  ---------------------------------------------------------   Heading  */
 
 header {
@@ -51,7 +56,7 @@ header {
 
 .header-text {
     font-size: 300%;
-    color: whitesmoke;
+    color: rgb(141, 135, 135);
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
     /* Subtle */
 }
@@ -69,12 +74,14 @@ header {
 .score-line-won {
     position: left;
     font-size: 100%;
+    color: whitesmoke;
     width: 150px;
     height: 40px;
     padding: 5px 10px;
-    margin: 30px 20px;
-    border-radius: 5px;
-    background-color: green;
+    /*margin: 30px 20px 30px 10px;*/
+    margin: auto;
+    border-radius: 2px;
+    background-color: #34a853;
     border: 1px solid #000000;
     text-align: left;
 }
@@ -82,12 +89,14 @@ header {
 .score-line-lost {
     position: left;
     font-size: 100%;
+    color: whitesmoke;
     width: 150px;
     height: 40px;
     padding: 5px 10px;
-    margin: 30px 20px;
-    border-radius: 5px;
-    background-color: #cc0000;
+    /* margin: 30px 20px; */
+    margin: auto;
+    border-radius: 2px;
+    background-color: #ea4335;
     border: 1px solid #000000;
     text-align: left;
 }
@@ -95,43 +104,51 @@ header {
 .score-line-hints {
     position: left;
     font-size: 100%;
+    color: whitesmoke;
     width: 150px;
     height: 40px;
     padding: 5px 10px;
-    margin: 30px 20px;
-    border-radius: 5px;
-    border-radius: 5px;
-    background-color: blue;
+    /* margin: 30px 20px; */
+    margin: auto;
+    border-radius: 2px;
+    background-color: #4385f4;
     border: 1px solid #000000;
     text-align: left;
 }
 
 .form-check-inline {
-    position: left;
+    position: center;
     font-size: 100%;
     width: 125px;
     height: 30px;
     padding: 5px 5px;
-    margin: 10px 5px;
-    border-radius: 5px;
-    border-radius: 5px;
+    margin: 10px 5px 10px 10px;
+    border-radius: 2px;
     background-color: #8f8f8f;
+    color: whitesmoke;
     border: 2px solid #000000;
-    text-align: left;
+    text-align: center;
 }
 
 .control-button {
     position: center;
     font-size: 100%;
+    color: whitesmoke;
     width: 65px;
     height: 30px;
-    padding: 3px 5px;
-    margin: 10px 5px;
-    border-radius: 5px;
-    border-radius: 5px;
-    background-color: white;
+    padding: 2px 5px;
+    margin: 10px 10px 10px 20px;
+    border-radius: 2px;
     border: 2px solid #000000;
-    text-align: left;
+    text-align: center;
+}
+
+.start-button {
+    background-color:  #63cf80;
+}
+
+.hint-button {
+    background-color: #6ea0f7;
 }
 
 /* --------------------     Card Styles    -------------------------*/
@@ -273,7 +290,16 @@ header {
 No media query since this is the default in Bootstrap
 
 Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) { ... }
+@media (min-width: 576px) {
+
+.flip-card {
+    background-color: transparent;
+    width: 200px;
+    height: 100px;
+    margin: 10px 10px;
+    perspective: 1000px;
+}
+}
 
 Medium devices (tablets, 768px and up)
 @media (min-width: 768px) { ... }
@@ -304,6 +330,7 @@ Extra large devices (large desktops, 1200px and up)
     position: relative;
     width: 100px;
     height: 100px;
+    margin: auto;
 }
 
 .base-timer__svg {
