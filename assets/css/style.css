@@ -36,7 +36,8 @@ h1, h2, h3, h4 {
 
 .row {
     margin-left: 0;
-    margin-right: 0;;
+    margin-right: 0;
+    ;
 }
 
 /*  ---------------------------------------------------------   Heading  */
@@ -78,7 +79,6 @@ header {
     width: 150px;
     height: 40px;
     padding: 5px 10px;
-    /*margin: 30px 20px 30px 10px;*/
     margin: auto;
     border-radius: 2px;
     background-color: #34a853;
@@ -144,7 +144,7 @@ header {
 }
 
 .start-button {
-    background-color:  #63cf80;
+    background-color: #63cf80;
 }
 
 .hint-button {
@@ -171,9 +171,11 @@ header {
 
 .flip-card {
     background-color: transparent;
-    width: 100px;
-    height: 100px;
-    margin: 10px 10px;
+    /* width: 100px;
+    height: 100px; */
+    width: 85px;
+    height: 85px;
+    margin: 5px 5px;
     perspective: 1000px;
 }
 
@@ -283,33 +285,6 @@ header {
     animation-iteration-count: 5;
 }
 
-/*  ----------------------- Media Queries section  Taken from Bootstrap site */
-
-
-/* Extra small devices (portrait phones, less than 576px)
-No media query since this is the default in Bootstrap
-
-Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-
-.flip-card {
-    background-color: transparent;
-    width: 200px;
-    height: 100px;
-    margin: 10px 10px;
-    perspective: 1000px;
-}
-}
-
-Medium devices (tablets, 768px and up)
-@media (min-width: 768px) { ... }
-
-Large devices (desktops, 992px and up)
-@media (min-width: 992px) { ... }
-
-Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) { ... }*/
-
 .timer-row {
     margin-left: auto;
     margin-right: auto;
@@ -379,3 +354,58 @@ Extra large devices (large desktops, 1200px and up)
     justify-content: center;
     font-size: 24px;
 }
+
+/*  ----------------------- Media Queries section  Taken from Bootstrap site 
+
+
+/* Extra small devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+*/
+
+/* Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 375px) {
+    .flip-card {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* slightly larger devices (6/7/8 plus phones, 736px and up) */
+
+@media (min-width: 414px) {
+    .flip-card {
+        width: 110px;
+        height: 110px;
+    }
+}
+
+
+/* Medium devices (tablets, 768px and up)  */
+
+@media (min-width: 768px) {
+    .flip-card {
+        width: 175px;
+        height: 175px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) 
+
+@media (min-width: 992px) {
+    .flip-card {
+        width: 175px;
+        height: 175px;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) * 
+
+@media (min-width: 1200px) {
+    .flip-card {
+        width: 175px;
+        height: 175px;
+    }
+}
+
+*/
