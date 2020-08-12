@@ -40,6 +40,7 @@ h1, h2, h3, h4 {
     ;
 }
 
+
 /*  ---------------------------------------------------------   Heading  */
 
 header {
@@ -73,7 +74,6 @@ header {
 */
 
 .score-line-won {
-    position: left;
     font-size: 100%;
     color: whitesmoke;
     width: 150px;
@@ -83,11 +83,10 @@ header {
     border-radius: 2px;
     background-color: #34a853;
     border: 1px solid #000000;
-    text-align: left;
+    text-align: center;
 }
 
 .score-line-lost {
-    position: left;
     font-size: 100%;
     color: whitesmoke;
     width: 150px;
@@ -98,11 +97,10 @@ header {
     border-radius: 2px;
     background-color: #ea4335;
     border: 1px solid #000000;
-    text-align: left;
+    text-align: center;
 }
 
 .score-line-hints {
-    position: left;
     font-size: 100%;
     color: whitesmoke;
     width: 150px;
@@ -113,11 +111,10 @@ header {
     border-radius: 2px;
     background-color: #4385f4;
     border: 1px solid #000000;
-    text-align: left;
+    text-align: center;
 }
 
 .form-check-inline {
-    position: center;
     font-size: 100%;
     width: 125px;
     height: 30px;
@@ -131,7 +128,6 @@ header {
 }
 
 .control-button {
-    position: center;
     font-size: 100%;
     color: whitesmoke;
     width: 65px;
@@ -143,6 +139,14 @@ header {
     text-align: center;
 }
 
+/*    Could be misleading 
+.control-button:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+*/ 
+
 .start-button {
     background-color: #63cf80;
 }
@@ -153,15 +157,11 @@ header {
 
 /* --------------------     Card Styles    -------------------------*/
 
-.opaque-overlay-card {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    /* text seems ok  */
+.opaque {
+    opacity: 0.4;
+    filter: alpha(opacity=40);  
 }
+
 
 .card-col {
     background-color: transparent;
@@ -187,6 +187,7 @@ header {
     transition: transform 0.6s;
     transform-style: preserve-3d;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
 }
 
 /* https://www.codespot.org/css-hover-effects/ */
@@ -215,9 +216,8 @@ header {
 }
 
 .flip-card-front-text {
-    margin: 25px;
+    margin: 20px;
     font-size: 300%;
-    text-align: center;
     color: whitesmoke;
 }
 
@@ -228,7 +228,7 @@ header {
 }
 
 .flip-card-back-text {
-    margin: 30px;
+    margin: 20px;
     text-align: center;
     color: whitesmoke;
 }
@@ -369,6 +369,13 @@ No media query since this is the default in Bootstrap
         width: 100px;
         height: 100px;
     }
+
+    .flip-card-front-text {
+        margin: 25px
+    }
+    .flip-card-back-text {
+        margin: 25px
+    }
 }
 
 /* slightly larger devices (6/7/8 plus phones, 736px and up) */
@@ -378,8 +385,14 @@ No media query since this is the default in Bootstrap
         width: 110px;
         height: 110px;
     }
-}
 
+    .flip-card-front-text {
+        margin: 30px;
+    }
+    .flip-card-back-text {
+        margin: 30px;
+    }
+}
 
 /* Medium devices (tablets, 768px and up)  */
 
@@ -387,6 +400,12 @@ No media query since this is the default in Bootstrap
     .flip-card {
         width: 175px;
         height: 175px;
+    }
+    .flip-card-front-text {
+        margin: 65px;
+    }
+    .flip-card-back-text {
+        margin: 65px;
     }
 }
 

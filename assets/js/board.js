@@ -70,6 +70,7 @@ class Board {
             // enable the hint button if we have some left and there are 2 or more pairs unmatched
             if (this.cardSetsUnmatched > 1 && this.hintsAvailable > 0) {
                 $("#hintButton").attr("disabled", false);
+                $("#hintButton").removeClass("opaque");
             }
 
             return;
@@ -90,6 +91,7 @@ class Board {
         this.matchInProcess = true;
         this.card2 = theCard;               // save for now
         $("#hintButton").attr("disabled", true);  // Hint is off the table 
+        $("#hintButton").addClass("opaque");
         this.cardFlip(theCard);
         this.getCardByID(this.card2.id).flipped = true;
 
@@ -102,7 +104,7 @@ class Board {
             this.getCardByID(this.card1.id).matched = true;
             this.getCardByID(this.card2.id).matched = true;
 
-            this.wiggle(this.card1, this.card2, "wiggle1s", 1100);  // Wiggle 1 second
+            this.wiggleCard(this.card1, this.card2, "wiggle1s", 1100);  // Wiggle 1 second
             setTimeout(() => {                  // 
                 this.card1 = null;
                 this.card2 = null;
@@ -158,14 +160,14 @@ class Board {
     }
 
     /**
- * @method: wiggle
+ * @method: wiggleCard
  * 
  * @param {card} card - The card that needs to be wiggled.  Planned for Hints and emphasis 
  * @param {card} card - The card that needs to be wiggled.  Planned for Hints and emphasis 
  * @param {duration} ms of wiggle.
  * Wiggle a pair of cards.  Can be used for a hint or as a match indication
  */
-    wiggle(card1, card2, style, duration) {
+    wiggleCard(card1, card2, style, duration) {
 
         $(`#${card2.id}`).addClass(style);
         $(`#${card1.id}`).addClass(style);
@@ -187,7 +189,8 @@ class Board {
         this.hintsAvailable--;
         $("#hint-count span").text(`${this.hintsAvailable}`);
         if (this.hintsavailable == 0) {
-            $("#hintButton").attr("disabled", true);  // Hint is off the table  
+            $("#hintButton").attr("disabled", true);  // Hint is off the table
+            $("#hintButton").removeClass("opaque");  
         }
 
         this.hintInProcess = true;
@@ -196,7 +199,7 @@ class Board {
         this.hintDecoyCard = this.getDecoyCard(card1Value);
 
         // Now that we have match and decoy, wiggle them for up to 
-        this.wiggle(this.hintMatchCard.cardHtmlElement, this.hintDecoyCard.cardHtmlElement, "wiggle3s", 3100);  // Wiggle 3 seconds
+        this.wiggleCard(this.hintMatchCard.cardHtmlElement, this.hintDecoyCard.cardHtmlElement, "wiggle3s", 3100);  // Wiggle 3 seconds
 
         setTimeout(() => {
             // if  a card has been selected then don't unwind anything

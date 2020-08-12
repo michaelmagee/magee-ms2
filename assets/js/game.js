@@ -66,7 +66,7 @@ class Game {
             this.hintButtonClick();
         });
             */
-        $("#hintButton").attr("disabled", true);  // disabled unless a card is in play. 
+        this.disable("#hintButton");  // disabled unless a card is in play. 
 
 
         /* keep gamelevel updated. 
@@ -92,25 +92,36 @@ class Game {
         if (!this.boardReady) {
             this.board = this.addBoard();
         }
-        $("#startButton").attr("disabled", true);
-        $("#easyRadio").attr("disabled", true);
-        $("#hardRadio").attr("disabled", true);
+
+        this.disable("#startButton");
+        this.disable("#easyRadio");
+        this.disable("#hardRadio");
+        this.disable("#hintButton");
+
         this.timer.startTimer(this.gameLost, this);
-        this.board.gamestarted = true; 
+        this.board.gamestarted = true;
     }
 
-    /**   Handle in Board 
-        * @method: hintButtonClick  
-        * Decrement the available hints
-        * Obtain the id of the single flipped card  
-       
-    hintButtonClick() {
-
-
-        console.log("Hint Button");
+    /**
+    * @method: disable  
+    * @param {elementID} element - an element (button of some type) to disable.
+    * Wrapper to reduce some enable/disable of buttons.
+    * lIt also adds opacity to the element for a clearer visial indication of state
+    */
+    disable(element) {
+        $(element).attr("disabled", true);
+        $(element).addClass("opaque");
     }
 
-    
+        /**
+    * @method: enable  
+    * @param {elementID} element - an element (button of some type) to enable.
+    * It also removes opacity from the element for a clearer visial indication of state
+    */
+    enable(element) {
+        $(element).attr("disabled", false);
+        $(element).removeClass("opaque");
+    }
 
     /**
         * @method: gameWon  
@@ -121,10 +132,10 @@ class Game {
         this.winCount++;
         this.boardReady = false;                        // will render a new board
         $("#win-count span").text(`${this.winCount}`);
-        $("#startButton").attr("disabled", false);
-        $("#easyRadio").attr("disabled", false);
-        $("#hardRadio").attr("disabled", false);
-        $("#hintButton").attr("disabled", true);
+        this.enable("#startButton");
+        this.enable("#easyRadio");
+        this.enable("#hardRadio");
+        this.disable("#hintButton");
         $("#startButton").html("Restart");              // will allow a restart of same gamelevel
     }
 
@@ -141,11 +152,18 @@ class Game {
         // This is fired under the "this" of the timer, so is somethat useless  
         // $("#loss-count span").text(`${this.lossCount}`);
         $("#startButton").attr("disabled", false);
+        $("#startButton").removeClass("opaque");
+
         $("#easyRadio").attr("disabled", false);
+        $("#easyRadio").removeClass("opaque");
+
         $("#hardRadio").attr("disabled", false);
+        $("#hardRadio").removeClass("opaque");
+
         $("#hintButton").attr("disabled", true);
+        $("#hintButton").addClass("opaque");
+
         $("#startButton").html("Restart");
-        console.log("  Lost that one!  ");
     }
 
     //  NOTE: need to figure out how to destroy stuff before creating new board
