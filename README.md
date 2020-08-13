@@ -24,15 +24,12 @@ My approach was to provide a simple to use game that has a clean presentation wi
 * As a user I expect the game to be challenging enough to capture my attention but easy enough be derive satisfaction 
 * As a user I want to be able to observe my success / failure and measure my improvement. 
 
-<br> ***
+<br> 
 
-## TODO: 
-handle ......
 
 *** 
 Hosted game
 The game is published at https://michaelmagee.github.io/magee-ms2/
-
 ***
 Wireframes for usability on different devices
 
@@ -42,10 +39,6 @@ Wireframes for usability on different devices
 - [Large Device](project/LargescreenDesktop.png)
 
 
-<br>
-<br>
-
-<br> ***
 
 ## MINIMUM Features (Must Have) 
 - **Simple Interface**: Must have a simple interface free of distraction and complexity 
@@ -57,13 +50,15 @@ Wireframes for usability on different devices
 - **Consistent and predictable controls**:Game controls should be disabled when they are not in context of game at that moment
 
 
-<br> <br> ***
+<br> <br> 
+***
 
 ## STRETCH Features (Nice to have) 
 - **Hint**: The user will be able to click a "Hint" button after the first car selection that will Visually indicate ("Jiggle") the matching card and one that does not match to select from. 
 
 
-<br> *** 
+<br> 
+*** 
 
 ## DEFERRED Features (Wish I could, maybe I will) 
 - **Email feedback**: User will be able to send a feedback form via email to me
@@ -72,7 +67,8 @@ Wireframes for usability on different devices
 
 
 
-<br> *** 
+<br> 
+*** 
 
 ## DEFERRED Features (Wish I could, maybe I will) 
 - **Email feedback**: User will be able to send a feedback form via email to me
@@ -84,12 +80,12 @@ Wireframes for usability on different devices
 <br> *** 
 
 ## What I learned 
-- **Javascript Classes**: I had the hardest time understanding the use of addEventListener('click', this) within class methods.  I tried dozens of class method approaches, arrow functions.  Class methods lost addressibility, arrow functions could not be removed or disabled. 
+- **Javascript Classes**: I had the hardest time understanding the use of addEventListener('click', this) within class methods.  I tried dozens of class method approaches, arrow functions.  Class methods lost addressability, arrow functions could not be removed or disabled. 
 
 Eventually, I found the handleEvent(event) {} which made it work as I expected. But it cost DAYS of trial and error. 
 
-
-<br> ***
+<br> 
+***
 ## Technologies Used
 
 In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
@@ -128,7 +124,23 @@ All tests described below have worked successfully across all browsers.
 Responsiveness checks have been run by using the Chrome developers's tools as well as manually resizing the windows  
 
 
-1. 
+1. I found that the media queries and card sizing really needed some adjustment to produce a 4X3 at full screen sizes 
+2.  
+
+| Feature | CB | CIPH | CPAD |  | FFB | FFIPH | FFPAD |  | SB  | SIPH | SPAD |  | Notes        |
+|---------|----|------|------|--|-----|-------|-------|--|-----|------|------|--|--------------|
+| ABCDE   | x  | y    | x    |  | hhh | w3    | vy    |  | avg | da   | gg   |  | asdasdasdasd |
+| ABCDE   | x  | y    | x    |  | hhh | w4    | vy    |  | avg | da   | gg   |  | asdasdasdasd |
+| ABCDE   | x  | y    | x    |  | hhh | w5    | vy    |  | avg | da   | gg   |  | asdasdasdasd |
+| ABCDE   | x  | y    | x    |  | hhh | w6    | vy    |  | avg | da   | gg   |  | asdasdasdasd |
+| ABCDE   | x  | y    | x    |  | hhh | w7    | vy    |  | avg | da   | gg   |  | asdasdasdasd |
+| ABCDE   | x  | y    | x    |  | hhh | w8    | vy    |  | avg | da   | gg   |  | asdasdasdasd |
+| ABCDE   | x  | y    | x    |  | hhh | w9    | vy    |  | avg | da   | gg   |  | asdasdasdasd |
+| ABCDE   | x  | y    | x    |  | hhh | w10   | vy    |  | avg | da   | gg   |  | asdasdasdasd |
+| ABCDE   | x  | y    | x    |  | hhh | w11   | vy    |  | avg | da   | gg   |  | asdasdasdasd |
+| ABCDE   | x  | y    | x    |  | hhh | w12   | vy    |  | avg | da   | gg   |  | asdasdasdasd |
+| ABCDE   | x  | y    | x    |  | hhh | w13   | vy    |  | avg | da   | gg   |  | asdasdasdasd |
+
 
 
 ## Deployment
