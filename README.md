@@ -32,10 +32,14 @@ handle ......
 *** 
 Hosted game
 The game is published at https://michaelmagee.github.io/magee-ms2/
-***
-Wireframes
 
-- [Main ->](projectrelated/xxxx-wf.png)
+***
+Wireframes for usability on different devices
+
+- [Initial idea](project/FirstDrawing.png)
+- [Small Device](project/iPhone.png)
+- [Medium Device](project/iPad.png)
+- [Large Device](project/LargescreenDesktop.png)
 
 
 <br>
@@ -47,10 +51,10 @@ Wireframes
 - **Simple Interface**: Must have a simple interface free of distraction and complexity 
 - **Multi Level**: Should have at least 2 levels - easy & hard
 - **Game timer/progress bar**: Counts down the remaining time left to win or lose the game
-- **Clear indication of win or lose**: An visual presentation of win or lose when the timer ends
+- **Indication of win or lose**: An visual presentation of win or lose when the timer ends
 - **Win/Loss/total games Counters**:A running total of games played, won and lost
-- **xxx**:
-- **xxx**:
+- **Good visual clues**:Good indications of cards being selected
+- **Consistent and predictable controls**:Game controls should be disabled when they are not in context of game at that moment
 
 
 <br> <br> ***
@@ -64,9 +68,28 @@ Wireframes
 ## DEFERRED Features (Wish I could, maybe I will) 
 - **Email feedback**: User will be able to send a feedback form via email to me
 - **Automated testing**: Jasmine test for object methods
+- **Refactor Board class**: I would like to have used the get / set as I did in the Card Class 
 
 
-***
+
+<br> *** 
+
+## DEFERRED Features (Wish I could, maybe I will) 
+- **Email feedback**: User will be able to send a feedback form via email to me
+- **Automated testing**: Jasmine test for object methods
+- **Refactor Board class**: I would like to have used the get / set as I did in the Card Class 
+
+
+
+<br> *** 
+
+## What I learned 
+- **Javascript Classes**: I had the hardest time understanding the use of addEventListener('click', this) within class methods.  I tried dozens of class method approaches, arrow functions.  Class methods lost addressibility, arrow functions could not be removed or disabled. 
+
+Eventually, I found the handleEvent(event) {} which made it work as I expected. But it cost DAYS of trial and error. 
+
+
+<br> ***
 ## Technologies Used
 
 In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
@@ -117,7 +140,7 @@ This sample site is set up to use git pages based on the current code version in
 
 This sample site can easily edited and run locally in the VSCode IDE by using the GoLive feature, which is how this code was developed.  To do this:
 - From a terminal in the appropriate location clone a copy of the code locally: 
-    - run: `git clone https://github.com/michaelmagee/magee-MS1.git`
+    - run: `git clone https://github.com/michaelmagee/magee-MS2.git`
     - then run `git remote rm origin` to remove the remote references to github.
 - Then from VSCode, open a new window and open the newly cloned directory.   The Go Live button is on the bottom right.
 ### Gitpod Reminders
@@ -140,7 +163,7 @@ Another blue button should appear to click: *Open Browser*.
 - Javascript class usage tutorials NetNinjas
 - Table of contents generated with markdown-toc: http://ecotrust-canada.github.io/markdown-toc/  
 - Rational approach to simple shuffle approaches: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array   I selected the Fisher-Yates (aka Knuth) Shuffle
-- Cool animated timer (modified to a class by me, but thank you Mateusz Rybczonec!) https://css-tricks.com/how-to-create-an-animated-countdown-timer-with-html-css-and-javascript/  
+- Cool animated timer (modified to a class by me, but thank you "Mateusz Rybczonec"!) https://css-tricks.com/how-to-create-an-animated-countdown-timer-with-html-css-and-javascript/  
 - Thank you Rik Schennink https://dev.to/rikschennink/the-fantastically-magical-handleevent-function-1bp4 for providing insight into event listener management within classes.  I was stuck for 4 days wresting with class level addEventListener/removeEventListener without ever knowing about handleEvent.
 
 
