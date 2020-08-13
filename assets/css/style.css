@@ -413,6 +413,19 @@ No media query since this is the default in Bootstrap
     }
 }
 
+@media (min-width: 1024px) {
+    .flip-card {
+        width: 200px;
+        height: 200px;
+    }
+    .flip-card-front-text {
+        margin: 75px;
+    }
+    .flip-card-back-text {
+        margin: 75px;
+    }
+}
+
 /* Large devices (desktops, 992px and up) 
 
 @media (min-width: 992px) {
