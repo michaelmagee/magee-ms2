@@ -129,7 +129,27 @@ Responsiveness checks have been run by using the Chrome developers's tools as we
 3. Before and between games I would have like to remove the hover pclass for the cards but could not figure out how.  
 4. 
 
-
+| Feature                                                             | CB | CIPH | CPAD |  | FFB | FFIPH | FFPAD |  | SB | SIPH | SPAD |  | Notes                              |
+|---------------------------------------------------------------------|----|------|------|--|-----|-------|-------|--|----|------|------|--|------------------------------------|
+| Pregame- only start and game type enabled                           | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
+| Start changes to restart after game done                            | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
+| Restart changes to restart after game changes                       | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
+| Hint not enabled if one set left                                    | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
+| Hint enabled only when one card visible                             | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
+| Hint decremented correctly                                          | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
+| Hint  disabled when hints depleted                                  | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
+| Hint selects match and decoy correctly                              | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
+| Hint decoy 3 second wiggle terminated if match                      | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
+| Timer decrements correctly                                          | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
+| Won/LOST increments correctly                                       | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
+| Card clicks disabled during animation and wiggle                    | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
+| Card shuffle appears correct                                        | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
+|                                                                     |    |      |      |  |     |       |       |  |    |      |      |  |                                    |
+| Responsiveness                                                      | 🆇 | ✅    | ✅    |  | 🆇  | ✅     | ✅     |  | 🆇 | ✅    | ✅    |  | Unable to solve the row length bug |
+|                                                                     |    |      |      |  |     |       |       |  |    |      |      |  |                                    |
+| CB = Chrome Browser, CIPH = Chrome iPhone, CPAD = Chrome iPad       |    |      |      |  |     |       |       |  |    |      |      |  |                                    |
+| FFB = Firefox Browser, FFIPH = Firefox iPhone, FFPAD = Firefox iPad |    |      |      |  |     |       |       |  |    |      |      |  |                                    |
+| SB = Safari Browser, SIPH = Safari iPhone, SPAD = Safari iPad       |    |      |      |  |     |       |       |  |    |      |      |  |   
 
 
 
