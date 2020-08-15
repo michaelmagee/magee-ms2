@@ -84,6 +84,7 @@ Wireframes for usability on different devices
 
 Eventually, I found the handleEvent(event) {} which made it work as I expected. But it cost DAYS of trial and error. 
 
+I would have liked to find an opportunity to employ a promise but found that setTimeout was adequate for the minor synchronous things. 
 <br> 
 ***
 ## Technologies Used
@@ -109,8 +110,6 @@ In this section, you should mention all of the languages, frameworks, libraries,
 
 
 
-
-
 ******
 ## Testing 
 
@@ -126,31 +125,31 @@ Responsiveness checks have been run by using the Chrome developers's tools as we
 
 1. I found that the media queries and card sizing really needed some adjustment to produce a 4X3 at full screen sizes 
 2. I found a minor timing issue with hint target wiggle ending a tad early.  Could not figure it out in time.
-3. Before and between games I would have like to remove the hover pclass for the cards but could not figure out how.  
-4. 
+3. Before and between games I would have like to remove the hover p-class for the cards but could not figure out how.  
+4. I found I was weakest in responsive design techniques.
 
-| Feature                                                             | CB | CIPH | CPAD |  | FFB | FFIPH | FFPAD |  | SB | SIPH | SPAD |  | Notes                              |
-|---------------------------------------------------------------------|----|------|------|--|-----|-------|-------|--|----|------|------|--|------------------------------------|
-| Pregame- only start and game type enabled                           | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
-| Start changes to restart after game done                            | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
-| Restart changes to restart after game changes                       | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
-| Hint not enabled if one set left                                    | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
-| Hint enabled only when one card visible                             | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
-| Hint decremented correctly                                          | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
-| Hint  disabled when hints depleted                                  | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
-| Hint selects match and decoy correctly                              | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
-| Hint decoy 3 second wiggle terminated if match                      | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
-| Timer decrements correctly                                          | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
-| Won/LOST increments correctly                                       | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
-| Card clicks disabled during animation and wiggle                    | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
-| Card shuffle appears correct                                        | ✅  | ✅    | ✅    |  | ✅   | ✅     | ✅     |  | ✅  | ✅    | ✅    |  |                                    |
-|                                                                     |    |      |      |  |     |       |       |  |    |      |      |  |                                    |
-| Responsiveness                                                      | 🆇 | ✅    | ✅    |  | 🆇  | ✅     | ✅     |  | 🆇 | ✅    | ✅    |  | Unable to solve the row length bug |
-|                                                                     |    |      |      |  |     |       |       |  |    |      |      |  |                                    |
-| CB = Chrome Browser, CIPH = Chrome iPhone, CPAD = Chrome iPad       |    |      |      |  |     |       |       |  |    |      |      |  |                                    |
-| FFB = Firefox Browser, FFIPH = Firefox iPhone, FFPAD = Firefox iPad |    |      |      |  |     |       |       |  |    |      |      |  |                                    |
-| SB = Safari Browser, SIPH = Safari iPhone, SPAD = Safari iPad       |    |      |      |  |     |       |       |  |    |      |      |  |   
+Key to matrix: 
+* CB = Chrome Browser, CIPH = Chrome iPhone, CPAD = Chrome iPad			
+* FFB = Firefox Browser, FFIPH = Firefox iPhone, FFPAD = Firefox iPad			
+* SB = Safari Browser, SIPH = Safari iPhone, SPAD = Safari iPad	
 
+| Feature                                          | CB | CIPH | CPAD | FFB | FFIPH | FFPAD | SB | SIPH | SPAD | Notes                                                 |
+|--------------------------------------------------|----|------|------|-----|-------|-------|----|------|------|-------------------------------------------------------|
+| Pregame- only start and game type enabled        | ✅  | ✅    | ✅    | ✅   | ✅     | ✅     | ✅  | ✅    | ✅    |                                                       |
+| Start changes to restart after game done         | ✅  | ✅    | ✅    | ✅   | ✅     | ✅     | ✅  | ✅    | ✅    |                                                       |
+| Restart changes to restart after game changes    | ✅  | ✅    | ✅    | ✅   | ✅     | ✅     | ✅  | ✅    | ✅    |                                                       |
+| Hint not enabled if one set left                 | ✅  | ✅    | ✅    | ✅   | ✅     | ✅     | ✅  | ✅    | ✅    |                                                       |
+| Hint enabled only when one card visible          | ✅  | ✅    | ✅    | ✅   | ✅     | ✅     | ✅  | ✅    | ✅    |                                                       |
+| Hint decremented correctly                       | ✅  | ✅    | ✅    | ✅   | ✅     | ✅     | ✅  | ✅    | ✅    |                                                       |
+| Hint  disabled when hints depleted               | ✅  | ✅    | ✅    | ✅   | ✅     | ✅     | ✅  | ✅    | ✅    |                                                       |
+| Hint selects match and decoy correctly           | ✅  | ✅    | ✅    | ✅   | ✅     | ✅     | ✅  | ✅    | ✅    |                                                       |
+| Hint decoy 3 second wiggle terminated if match   | ✅  | ✅    | ✅    | ✅   | ✅     | ✅     | ✅  | ✅    | ✅    |                                                       |
+| Timer decrements correctly                       | ✅  | ✅    | ✅    | ✅   | ✅     | ✅     | ✅  | ✅    | ✅    |                                                       |
+| Won/LOST increments correctly                    | ✅  | ✅    | ✅    | ✅   | ✅     | ✅     | ✅  | ✅    | ✅    |                                                       |
+| Card clicks disabled during animation and wiggle | ✅  | ✅    | ✅    | ✅   | ✅     | ✅     | ✅  | ✅    | ✅    |                                                       |
+| Card shuffle appears correct                     | ✅  | ✅    | ✅    | ✅   | ✅     | ✅     | ✅  | ✅    | ✅    |                                                       |
+|                                                  |    |      |      |     |       |       |    |      |      |                                                       |
+| Responsiveness                                   | 🆇 | ✅    | ✅    | 🆇  | ✅     | ✅     | 🆇 | ✅    | ✅    | Unable to solve the row length bug in desktop browser |
 
 
 ## Deployment
@@ -181,12 +180,9 @@ Another blue button should appear to click: *Open Browser*.
 ## Credits
 - Organizational and planning support from Mentor Brian M.  
 - Attempted color inspiration from color.adobe.com
-- Memory Game and animation tutorials from Adam Khoury
-- Javascript class usage tutorials NetNinjas
 - Table of contents generated with markdown-toc: http://ecotrust-canada.github.io/markdown-toc/  
-- Rational approach to simple shuffle approaches: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array   I selected the Fisher-Yates (aka Knuth) Shuffle
-- Cool animated timer (modified to a class by me, but thank you "Mateusz Rybczonec"!) https://css-tricks.com/how-to-create-an-animated-countdown-timer-with-html-css-and-javascript/  
 - Thank you Rik Schennink https://dev.to/rikschennink/the-fantastically-magical-handleevent-function-1bp4 for providing insight into event listener management within classes.  I was stuck for 4 days wresting with class level addEventListener/removeEventListener without ever knowing about handleEvent.
+- Cool Excel to markdown utility by DaveJ: https://thisdavej.com/copy-table-in-excel-and-paste-as-a-markdown-table/
 
 
 ### Environment 
@@ -205,4 +201,7 @@ Another blue button should appear to click: *Open Browser*.
 ### Acknowledgements
 
 - I received inspiration for this project from examples from Code Institute that I played with as I was learning.  
-- I took several classes in parallel on Lynda to get different approaches
+- Memory Game and animation tutorials from Adam Khoury
+- Javascript class usage tutorials NetNinjas
+- Rational approach to simple shuffle approaches: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array   I selected the Fisher-Yates (aka Knuth) Shuffle
+- Cool animated timer (modified to a class by me, but thank you "Mateusz Rybczonec"!) https://css-tricks.com/how-to-create-an-animated-countdown-timer-with-html-css-and-javascript/  
