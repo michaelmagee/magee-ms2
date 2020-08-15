@@ -60,12 +60,6 @@ class Game {
             this.startButtonClick();
         });
 
-        /* Let this be handled in biard 
-        let button2 = document.getElementById("hintButton");
-        button2.addEventListener('click', () => {
-            this.hintButtonClick();
-        });
-            */
         this.disable("#hintButton");  // disabled unless a card is in play. 
 
 
@@ -113,7 +107,7 @@ class Game {
         $(element).addClass("opaque");
     }
 
-        /**
+    /**
     * @method: enable  
     * @param {elementID} element - an element (button of some type) to enable.
     * It also removes opacity from the element for a clearer visial indication of state
@@ -202,7 +196,7 @@ wiggleScore(score, style, duration) {
     addBoard() {
         // Reset and create the Board 
 
-        this.board = null;   // not sure if this ends all the previous games to garbage collection 
+        this.board = null;   // not sure if this sends all the previous games to garbage collection 
 
         document.getElementById("gameboard").innerHTML = "";
         document.getElementById("gameboard").innerText = "";

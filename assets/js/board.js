@@ -181,7 +181,7 @@ class Board {
     /**
      * @method: displayHint
      * We have this.card1 flipped
-     * We need to obtain the match for it and select an eligble card at random to present with it. 
+     * We need to obtain the match for it and select an eligble card at random as a decoy. 
      * 
 
      */
@@ -323,6 +323,7 @@ class Board {
             this.boardElement.innerHTML += card.innerHtml;
             card.cardHtmlElement = document.getElementById(card.htmlID);
         }
+    
         this.cardSetsUnmatched = shuffledCards.length / 2;  // Set number of pairs to match
     }
 

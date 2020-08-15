@@ -3,7 +3,7 @@
 
 The requirement of this project is to "...build an interactive front-end site. The site should respond to the users' actions, allowing users to actively engage with data, alter the way the site displays the information to achieve their preferred goals."
 
-I selected the memory game to leverage the topics in the previous lessons in a fun way.  I attempted to exceed the concepts that were presented for technologies that introduced programmatic user interaction.
+I selected the memory game to leverage the topics in the previous lessons in a fun way.  I attempted to exceed the concepts that were presented for technologies that introduced programmatic user interaction.  Specifically I wanted to be a bit more object oriented. 
 
 My approach was to provide a simple to use game that has a clean presentation with as little distraction as possible to the user. I avoided any type of arcade game confusion. 
 
@@ -125,21 +125,11 @@ Responsiveness checks have been run by using the Chrome developers's tools as we
 
 
 1. I found that the media queries and card sizing really needed some adjustment to produce a 4X3 at full screen sizes 
-2.  
+2. I found a minor timing issue with hint target wiggle ending a tad early.  Could not figure it out in time.
+3. Before and between games I would have like to remove the hover pclass for the cards but could not figure out how.  
+4. 
 
-| Feature | CB | CIPH | CPAD |  | FFB | FFIPH | FFPAD |  | SB  | SIPH | SPAD |  | Notes        |
-|---------|----|------|------|--|-----|-------|-------|--|-----|------|------|--|--------------|
-| ABCDE   | x  | y    | x    |  | hhh | w3    | vy    |  | avg | da   | gg   |  | asdasdasdasd |
-| ABCDE   | x  | y    | x    |  | hhh | w4    | vy    |  | avg | da   | gg   |  | asdasdasdasd |
-| ABCDE   | x  | y    | x    |  | hhh | w5    | vy    |  | avg | da   | gg   |  | asdasdasdasd |
-| ABCDE   | x  | y    | x    |  | hhh | w6    | vy    |  | avg | da   | gg   |  | asdasdasdasd |
-| ABCDE   | x  | y    | x    |  | hhh | w7    | vy    |  | avg | da   | gg   |  | asdasdasdasd |
-| ABCDE   | x  | y    | x    |  | hhh | w8    | vy    |  | avg | da   | gg   |  | asdasdasdasd |
-| ABCDE   | x  | y    | x    |  | hhh | w9    | vy    |  | avg | da   | gg   |  | asdasdasdasd |
-| ABCDE   | x  | y    | x    |  | hhh | w10   | vy    |  | avg | da   | gg   |  | asdasdasdasd |
-| ABCDE   | x  | y    | x    |  | hhh | w11   | vy    |  | avg | da   | gg   |  | asdasdasdasd |
-| ABCDE   | x  | y    | x    |  | hhh | w12   | vy    |  | avg | da   | gg   |  | asdasdasdasd |
-| ABCDE   | x  | y    | x    |  | hhh | w13   | vy    |  | avg | da   | gg   |  | asdasdasdasd |
+
 
 
 

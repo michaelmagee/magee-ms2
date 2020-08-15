@@ -37,7 +37,6 @@ h1, h2, h3, h4 {
 .row {
     margin-left: 0;
     margin-right: 0;
-    ;
 }
 
 
@@ -366,7 +365,7 @@ header {
 No media query since this is the default in Bootstrap
 */
 
-/* Small devices (landscape phones, 576px and up) */
+/* Small devices (landscape phones, 576px and up)*/
 
 @media (min-width: 375px) {
     .flip-card {
@@ -380,7 +379,7 @@ No media query since this is the default in Bootstrap
     .flip-card-back-text {
         margin: 25px
     }
-}
+} 
 
 /* slightly larger devices (6/7/8 plus phones, 736px and up) */
 
@@ -413,7 +412,9 @@ No media query since this is the default in Bootstrap
     }
 }
 
-@media (min-width: 1024px) {
+
+/*  Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
     .flip-card {
         width: 200px;
         height: 200px;
@@ -426,7 +427,7 @@ No media query since this is the default in Bootstrap
     }
 }
 
-/* Large devices (desktops, 992px and up) 
+/* NONE BELOW Large devices (desktops, 992px and up) 
 
 @media (min-width: 992px) {
     .flip-card {

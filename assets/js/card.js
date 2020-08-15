@@ -22,19 +22,9 @@ class Card {
         this._innerHtml = "";  
 
         this.valueID = `${htmlId}-value`;
-        this.innerHtml = `
-        <div id=${htmlId} class="flip-card">
-            <div class="flip-card-container">
-                <div class="flip-card-back">
-                    <h2 id=${this.valueID} class="flip-card-back-text">${cardvalue}</h2> 
-                </div>
-                <div class="flip-card-front">
-                    <h2 class="flip-card-front-text">?</h2> 
-                </div>
-            </div>
-        </div>`;
+        this.innerHtml = `<div id=${htmlId} class="flip-card"><div class="flip-card-container"><div class="flip-card-back"><h2 id=${this.valueID} class="flip-card-back-text">${cardvalue}</h2> </div><div class="flip-card-front"><h2 class="flip-card-front-text">?</h2></div></div></div>`;
     }
-
+ 
     /**
  * @method: get innerHtml
  * @returns {HTML}  html that represents this card on the board
