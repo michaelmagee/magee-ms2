@@ -26,6 +26,7 @@ My approach was to provide a simple to use game that has a clean presentation wi
 
 <br> 
 
+![game-image](project/magee-ms2-overview.png "Game Image")
 
 *** 
 Hosted game
