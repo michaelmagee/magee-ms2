@@ -67,17 +67,6 @@ Wireframes for usability on different devices
 - **Refactor Board class**: I would like to have used the get / set as I did in the Card Class 
 
 
-
-<br> 
-*** 
-
-## DEFERRED Features (Wish I could, maybe I will) 
-- **Email feedback**: User will be able to send a feedback form via email to me
-- **Automated testing**: Jasmine test for object methods
-- **Refactor Board class**: I would like to have used the get / set as I did in the Card Class 
-
-
-
 <br> *** 
 
 ## What I learned 
