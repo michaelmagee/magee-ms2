@@ -123,13 +123,13 @@ class Game {
         * re-enables all of the buttons to allow a restart or game change. 
         */
     gameWon() {
-        
+
         this.boardReady = false;                        // will render a new board
         this.winCount++;
         $("#win-count span").text(`${this.winCount}`);
 
         this.wiggleScore("#win-count", "wiggle2s", 2100);  // Wiggle 2 seconds
-         
+
         setTimeout(() => {                  // 
             this.enable("#startButton");
             this.enable("#easyRadio");
@@ -168,21 +168,21 @@ class Game {
     }
 
 
-        /**
- * @method: wiggleCard
- * 
- * @param {Score ID}  - The score that needs to be wiggled.   
- * @param {duration} ms of wiggle.
- * Wiggle score area
- */
-wiggleScore(score, style, duration) {
+    /**
+* @method: wiggleCard
+* 
+* @param {Score ID}  - The score that needs to be wiggled.   
+* @param {duration} ms of wiggle.
+* Wiggle score area
+*/
+    wiggleScore(score, style, duration) {
 
-    $(`${score}`).addClass(style);
-    setTimeout(() => {
-        $(`${score}`).removeClass(style);
+        $(`${score}`).addClass(style);
+        setTimeout(() => {
+            $(`${score}`).removeClass(style);
 
-    }, duration);
-}
+        }, duration);
+    }
     //  NOTE: need to figure out how to destroy stuff before creating new board
     /**
      * @method: addBoard  
@@ -224,7 +224,6 @@ wiggleScore(score, style, duration) {
         this.timer.resetTimer();
         this.timer.setHTML();
 
-        console.log("BOARD ADDED");
         return newBoard;
     }
 
@@ -240,8 +239,6 @@ wiggleScore(score, style, duration) {
 
         let m = array.length, t, i;
 
-        console.log("Before Shuffle:" + array);
-
         // While there remain elements to shuffle…
         while (m) {
 
@@ -253,7 +250,6 @@ wiggleScore(score, style, duration) {
             array[m] = array[i];
             array[i] = t;
         }
-        console.log("After Shuffle:" + array);
         return array;
     }
 
